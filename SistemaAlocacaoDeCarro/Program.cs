@@ -16,22 +16,19 @@ namespace SistemaAlocacaoDeCarro
 
             var opcaoMenu = MenuInicial();
 
-            while (opcaoMenu != 3)
+            while (opcaoMenu != 5)
             {
                 MetodoPrincipal(opcaoMenu);
 
-                if (opcaoMenu == 1)
+                if (opcaoMenu == 1 || opcaoMenu == 2 || opcaoMenu == 3)
                 {
+                    Introducao();
+
                     MostrarLista();
 
-                    Console.WriteLine("Pressione 's' para sair ou outra tecla para continuar:");
+                    LerTecla();
 
-                    if (Console.ReadKey().KeyChar.ToString() != "s")
-                    {
-                        opcaoMenu = MenuInicial();
-                    }
-                    else
-                        FinalizarSistema();
+                    opcaoMenu = MenuInicial();
                 }
             }
 
@@ -76,8 +73,10 @@ namespace SistemaAlocacaoDeCarro
             Console.WriteLine("");
             Console.WriteLine("Selecione a opção desejada:");
             Console.WriteLine("1 - Alocar um carro");
-            Console.WriteLine("2 - SUPER ANIMAÇÃO AUTOMOBILISTICA!!!");
-            Console.WriteLine("3 - Sair do sistema");
+            Console.WriteLine("2 - Devolver um carro");
+            Console.WriteLine("3 - Atualizar lista de carros");
+            Console.WriteLine("4 - SUPER ANIMAÇÃO AUTOMOBILISTICA!!!");
+            Console.WriteLine("5 - Sair do sistema");
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
             return opcao;
         }
@@ -105,13 +104,15 @@ namespace SistemaAlocacaoDeCarro
         /// Método responsável para atualizar a lista de carros sempre que o usuário realiza uma alocação.
         /// </summary>
         /// <param name="carro">Nome do carro a ser alocado.</param>
-        public static void AtualizaLista(string carro)
+        public static void AtualizaSistema(string carro, bool alocar)
         {
+            carro = carro.ToUpper();
+
             for (int i = 0; i < ListaDeCarros.GetLength(0); i++)
             {
-                if (carro == ListaDeCarros[i, 0])
+                if (carro == ListaDeCarros[i, 0].ToUpper())
                 {
-                    ListaDeCarros[i, 2] = "Não";
+                    ListaDeCarros[i, 2] = alocar? "Não" : "Sim";
                 }
             }
         }
@@ -124,8 +125,18 @@ namespace SistemaAlocacaoDeCarro
 
             for (int i = 0; i < ListaDeCarros.GetLength(0); i++)
             {
-                Console.WriteLine($"Nome: {ListaDeCarros[i, 0]}, ano: {ListaDeCarros[i, 1]}, disponível: {ListaDeCarros[i, 2]}.");
+                Console.WriteLine($"{i+1} - Nome: {ListaDeCarros[i, 0]}, ano: {ListaDeCarros[i, 1]}, disponível: {ListaDeCarros[i, 2]}.");
             }
+            Console.WriteLine("");
+        }
+        /// <summary>
+        /// Ao chamar este método, o programa só continuará quando alguma tecla for pressionada;
+        /// </summary>
+        public static void LerTecla()
+        {
+            Console.WriteLine("\r\nPressione qualquer tecla para continuar:");
+
+            Console.ReadKey();
         }
         /// <summary>
         /// Método principal que realiza as escolhas do usuário.
@@ -133,7 +144,7 @@ namespace SistemaAlocacaoDeCarro
         /// <param name="opcaoMenu">Opção escolhida pelo usuário.</param>
         public static void MetodoPrincipal(int opcaoMenu)
         {
-            while (opcaoMenu != 1 && opcaoMenu != 2 && opcaoMenu != 3)
+            while (opcaoMenu != 1 && opcaoMenu != 2 && opcaoMenu != 3 && opcaoMenu != 4)
             {
                 Introducao();
                 Console.WriteLine("Opção inválida! Tente novamente.");
@@ -141,55 +152,201 @@ namespace SistemaAlocacaoDeCarro
             }
             if (opcaoMenu == 1)
             {
+                AlocarCarro();
+            }
+            else if (opcaoMenu == 2)
+            {
+                DesalocarCarro();
+            }
+            else if (opcaoMenu == 3)
+            {
+                AtualizarLista();
+            }
+            else if (opcaoMenu == 4)
+            {
+                Animacao();
+            }
+        }
+        /// <summary>
+        /// Método que mostra as operações para alocar um carro.
+        /// </summary>
+        public static void AlocarCarro()
+        {
+            Introducao();
+
+            Console.WriteLine("Digite o nome do carro desejado: ");
+
+            var nomeDoCarro = Console.ReadLine();
+
+            if (PesquisarCarro(nomeDoCarro) == 1)
+            {
                 Introducao();
 
-                Console.WriteLine("Digite o nome do carro desejado: ");
+                Console.WriteLine($"Você deseja alocar o carro? 1 - sim   2 - não");
 
-                var nomeDoCarro = Console.ReadLine();
+                var opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
 
-                if (PesquisarCarro(nomeDoCarro) == 1)
+                while (opcaoAlocacao != "1" && opcaoAlocacao != "2")
                 {
                     Introducao();
-
+                    Console.WriteLine("Opção inválida! Tente novamente.");
                     Console.WriteLine($"Você deseja alocar o carro? 1 - sim   2 - não");
-
-                    var opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
-
-                    while (opcaoAlocacao != "1" && opcaoAlocacao != "2")
-                    {
-                        Introducao();
-                        Console.WriteLine("Opção inválida! Tente novamente.");
-                        Console.WriteLine($"Você deseja alocar o carro? 1 - sim   2 - não");
-                        opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
-                    }
-                    if (opcaoAlocacao == "1")
-                    {
-                        AtualizaLista(nomeDoCarro);
-                        Introducao();
-                        Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} alocado com sucesso!");
-                    }
-                    else
-                    {
-                        Introducao();
-                        Console.WriteLine($"{nomeDoCarro} não alocado.");
-                    }
+                    opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
                 }
-                else if (PesquisarCarro(nomeDoCarro) == 2)
+                if (opcaoAlocacao == "1")
                 {
+                    AtualizaSistema(nomeDoCarro, true);
                     Introducao();
-
-                    Console.WriteLine($"O carro {nomeDoCarro} não está disponível para alocação!");
+                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} alocado com sucesso!");
+                    LerTecla();
                 }
                 else
                 {
                     Introducao();
-
-                    Console.WriteLine($"O carro {nomeDoCarro} não foi encontrado no sistema!");
+                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} não alocado.");
+                    LerTecla();
                 }
             }
-            else if (opcaoMenu == 2)
+            else if (PesquisarCarro(nomeDoCarro) == 2)
             {
-                Animacao();
+                Introducao();
+
+                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} não está disponível para alocação!");
+                LerTecla();
+            }
+            else
+            {
+                Introducao();
+
+                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} não foi encontrado no sistema!");
+                LerTecla();
+            }
+        }
+        /// <summary>
+        /// Método que mostra as operações para devolver um carro.
+        /// </summary>
+        public static void DesalocarCarro()
+        {
+            Introducao();
+            MostrarLista();
+
+            Console.WriteLine("Digite o nome do carro a ser devolvido: ");
+
+            var nomeDoCarro = Console.ReadLine();
+
+            if (PesquisarCarro(nomeDoCarro) == 2)
+            {
+                Introducao();
+
+                Console.WriteLine($"Você deseja devolver o carro {nomeDoCarro}? 1 - sim   2 - não");
+
+                var opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
+
+                while (opcaoAlocacao != "1" && opcaoAlocacao != "2")
+                {
+                    Introducao();
+                    Console.WriteLine("Opção inválida! Tente novamente.");
+                    Console.WriteLine($"Você deseja devolver o carro {nomeDoCarro}? 1 - sim   2 - não");
+                    opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
+                }
+                if (opcaoAlocacao == "1")
+                {
+                    AtualizaSistema(nomeDoCarro, false);
+                    Introducao();
+                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} devolvido com sucesso!");
+                    LerTecla();
+                }
+                else
+                {
+                    Introducao();
+                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} não devolvido.");
+                    LerTecla();
+                }
+            }
+            else if (PesquisarCarro(nomeDoCarro) == 1)
+            {
+                Introducao();
+
+                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} já foi devolvido!");
+                LerTecla();
+            }
+            else
+            {
+                Introducao();
+
+                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} não foi encontrado no sistema!");
+                LerTecla();
+            }
+        }
+        /// <summary>
+        /// Chamado para cuidar de todo o processo necessário para atualizar algum dado na lista de carros.
+        /// </summary>
+        public static void AtualizarLista()
+        {
+            Introducao();
+
+            Console.WriteLine("Escolha a linha a ser modificada digitando o número correspondente:");
+
+            MostrarLista();
+
+            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcaoLinha);
+
+            while (opcaoLinha > ListaDeCarros.GetLength(0) || opcaoLinha < 1)
+            {
+                Introducao();
+
+                Console.WriteLine("Opção inválida! Tente novamente:");
+
+                MostrarLista();
+
+                int.TryParse(Console.ReadKey().KeyChar.ToString(), out opcaoLinha);
+            }
+
+            opcaoLinha = opcaoLinha - 1;
+
+            Introducao();
+
+            Console.WriteLine($"{opcaoLinha + 1} - Nome: {ListaDeCarros[opcaoLinha, 0]}, " +
+                $"ano: {ListaDeCarros[opcaoLinha, 1]}, " +
+                $"disponível: {ListaDeCarros[opcaoLinha, 2]}.");
+
+            Console.WriteLine("\r\nInforme o dado que deseja modificar:");
+            Console.WriteLine("1 - Nome   2 - Ano   3 - Disponibilidade");
+
+            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcaoColuna);
+
+            Introducao();
+
+            if (opcaoColuna == 1)
+            {
+                Console.WriteLine("Informe o nome do carro:");
+                ListaDeCarros[opcaoLinha, 0] = UppercaseFirst(Console.ReadLine());
+            }
+            else if(opcaoColuna == 2)
+            {
+                Console.WriteLine("Informe o ano do carro:");
+                ListaDeCarros[opcaoLinha, 1] = UppercaseFirst(Console.ReadLine());
+            }
+            else if (opcaoColuna == 3)
+            {
+                Console.WriteLine("Informe a disponibilidade do carro: 1 - sim   2 - não");
+
+                int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcaoDisponibilidade);
+
+                while (opcaoDisponibilidade != 1 && opcaoDisponibilidade != 2)
+                {
+                    Introducao();
+
+                    Console.WriteLine("Opção inválida! Tente novamente:");
+                    Console.WriteLine("\r\nInforme a disponibilidade do carro: 1 - sim   2 - não");
+
+                    int.TryParse(Console.ReadKey().KeyChar.ToString(), out opcaoDisponibilidade);
+                }
+
+                if (opcaoDisponibilidade == 1)
+                    ListaDeCarros[opcaoLinha, 2] = "Sim";
+                else
+                    ListaDeCarros[opcaoLinha, 2] = "Não";
             }
         }
         /// <summary>
@@ -250,6 +407,11 @@ namespace SistemaAlocacaoDeCarro
                 Console.Clear();
             }
         }
+        /// <summary>
+        /// Transforma uma palavra de modo que sua primeira letra seja maiúscula e as outras minúsculas.
+        /// </summary>
+        /// <param name="s">Palavra escolhida.</param>
+        /// <returns>Retorna a palavra com as modificações especificadas.</returns>
         public static string UppercaseFirst(string s)
         {
             if (string.IsNullOrEmpty(s))
@@ -259,19 +421,202 @@ namespace SistemaAlocacaoDeCarro
 
             char[] a = s.ToCharArray();
 
-            foreach (var letra in a)
-                char.ToLower(letra);
+            for (int i = 0; i < a.Length; i++)
+                a[i] = char.ToLower(a[i]);
 
             a[0] = char.ToUpper(a[0]);
             return new string(a);
         }
+        /// <summary>
+        /// Finaliza o programa...
+        /// </summary>
         public static void FinalizarSistema()
         {
-            Console.Clear();
+            var n = 0;
+            while (n != 666)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("  ______                        |");
+                Console.WriteLine(" /|_|||_ |_                     |");
+                Console.WriteLine("(   _    _ _)                   |");
+                Console.WriteLine("=`-(_)--(_)-'                   |");
+                Console.WriteLine("\r\n                   Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
 
-            Console.WriteLine("Finalizando o sistema...");
-            Thread.Sleep(1200);
-            Environment.Exit(0);
+                Console.WriteLine("");
+                Console.WriteLine("   ______                       |");
+                Console.WriteLine("  /|_|||_ |_                    |");
+                Console.WriteLine(" (   _    _ _)                  |");
+                Console.WriteLine(" =`-(_)--(_)-'                  |");
+                Console.WriteLine("\r\n                  Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("    ______                      |");
+                Console.WriteLine("   /|_|||_ |_                   |");
+                Console.WriteLine("  (   _    _ _)                 |");
+                Console.WriteLine("  =`-(_)--(_)-'                 |");
+                Console.WriteLine("\r\n                 Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("     ______                     |");
+                Console.WriteLine("    /|_|||_ |_                  |");
+                Console.WriteLine("   (   _    _ _)                |");
+                Console.WriteLine("   =`-(_)--(_)-'                |");
+                Console.WriteLine("\r\n                Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("      ______                    |");
+                Console.WriteLine("     /|_|||_ |_                 |");
+                Console.WriteLine("    (   _    _ _)               |");
+                Console.WriteLine("    =`-(_)--(_)-'               |");
+                Console.WriteLine("\r\n               Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("       ______                   |");
+                Console.WriteLine("      /|_|||_ |_                |");
+                Console.WriteLine("     (   _    _ _)              |");
+                Console.WriteLine("     =`-(_)--(_)-'              |");
+                Console.WriteLine("\r\n              Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("        ______                  |");
+                Console.WriteLine("       /|_|||_ |_               |");
+                Console.WriteLine("      (   _    _ _)             |");
+                Console.WriteLine("      =`-(_)--(_)-'             |");
+                Console.WriteLine("\r\n             Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("         ______                 |");
+                Console.WriteLine("        /|_|||_ |_              |");
+                Console.WriteLine("       (   _    _ _)            |");
+                Console.WriteLine("       =`-(_)--(_)-'            |");
+                Console.WriteLine("\r\n            Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("          ______                |");
+                Console.WriteLine("         /|_|||_ |_             |");
+                Console.WriteLine("        (   _    _ _)           |");
+                Console.WriteLine("        =`-(_)--(_)-'           |");
+                Console.WriteLine("\r\n           Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("           ______               |");
+                Console.WriteLine("          /|_|||_ |_            |");
+                Console.WriteLine("         (   _    _ _)          |");
+                Console.WriteLine("         =`-(_)--(_)-'          |");
+                Console.WriteLine("\r\n          Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("            ______              |");
+                Console.WriteLine("           /|_|||_ |_           |");
+                Console.WriteLine("          (   _    _ _)         |");
+                Console.WriteLine("          =`-(_)--(_)-'         |");
+                Console.WriteLine("\r\n         Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("             ______             |");
+                Console.WriteLine("            /|_|||_ |_          |");
+                Console.WriteLine("           (   _    _ _)        |");
+                Console.WriteLine("           =`-(_)--(_)-'        |");
+                Console.WriteLine("\r\n        Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("              ______            |");
+                Console.WriteLine("             /|_|||_ |_         |");
+                Console.WriteLine("            (   _    _ _)       |");
+                Console.WriteLine("            =`-(_)--(_)-'       |");
+                Console.WriteLine("\r\n       Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("               ______           |");
+                Console.WriteLine("              /|_|||_ |_        |");
+                Console.WriteLine("             (   _    _ _)      |");
+                Console.WriteLine("             =`-(_)--(_)-'      |");
+                Console.WriteLine("\r\n      Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("                ______          |");
+                Console.WriteLine("               /|_|||_ |_       |");
+                Console.WriteLine("              (   _    _ _)     |");
+                Console.WriteLine("              =`-(_)--(_)-'     |");
+                Console.WriteLine("\r\n     Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("                 ______         |");
+                Console.WriteLine("                /|_|||_ |_      |");
+                Console.WriteLine("               (   _    _ _)    |");
+                Console.WriteLine("               =`-(_)--(_)-'    |");
+                Console.WriteLine("\r\n    Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("                  ______        |");
+                Console.WriteLine("                 /|_|||_ |_     |");
+                Console.WriteLine("                (   _    _ _)   |");
+                Console.WriteLine("                =`-(_)--(_)-'   |");
+                Console.WriteLine("\r\n   Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("                   ______       |");
+                Console.WriteLine("                  /|_|||_ |_    |");
+                Console.WriteLine("                 (   _    _ _)  |");
+                Console.WriteLine("                 =`-(_)--(_)-'  |");
+                Console.WriteLine("\r\n  Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("                    ______      |");
+                Console.WriteLine("                   /|_|||_ |_   |");
+                Console.WriteLine("                  (   _    _ _) |");
+                Console.WriteLine("                  =`-(_)--(_)-' |");
+                Console.WriteLine("\r\n Finalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Console.WriteLine("");
+                Console.WriteLine("                     ______     |");
+                Console.WriteLine("                    /|_|||_ |_  |");
+                Console.WriteLine("                   (   _    _ _)|");
+                Console.WriteLine("                   =`-(_)--(_)-'|");
+                Console.WriteLine("\r\nFinalizando o sistema...");
+                Thread.Sleep(10);
+                Console.Clear();
+
+                Environment.Exit(0);
+            }
         }
     }
 }

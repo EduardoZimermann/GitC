@@ -14,24 +14,7 @@ namespace SistemaAlocacaoDeCarro
         {
             CarregaListaDeCarros();
 
-            var opcaoMenu = 0;
-
-            while (opcaoMenu != 5)
-            {
-                while (opcaoMenu > 5 || opcaoMenu < 1)
-                {
-                    opcaoMenu = MenuInicial();
-                }
-
-                MetodoPrincipal(opcaoMenu);
-
-                if (opcaoMenu == 1 || opcaoMenu == 2 || opcaoMenu == 3)
-                {
-                    LerTecla();
-
-                    opcaoMenu = MenuInicial();
-                }
-            }
+            LacoDeRepeticao();
 
             FinalizarSistema();
         }
@@ -167,11 +150,36 @@ namespace SistemaAlocacaoDeCarro
             }
         }
         /// <summary>
+        /// Realiza o método de repetição principal, na qual força o usuário a digitar a opção correta.
+        /// </summary>
+        public static void LacoDeRepeticao()
+        {
+            var opcaoMenu = 0;
+
+            while (opcaoMenu != 5)
+            {
+                while (opcaoMenu > 5 || opcaoMenu < 1)
+                {
+                    opcaoMenu = MenuInicial();
+                }
+
+                MetodoPrincipal(opcaoMenu);
+
+                if (opcaoMenu == 1 || opcaoMenu == 2 || opcaoMenu == 3)
+                {
+                    LerTecla();
+
+                    opcaoMenu = MenuInicial();
+                }
+            }
+        }
+        /// <summary>
         /// Método que mostra as operações para alocar um carro.
         /// </summary>
         public static void AlocarCarro()
         {
             Introducao();
+            MostrarLista();
 
             Console.WriteLine("Digite o nome do carro desejado: ");
 
@@ -182,7 +190,7 @@ namespace SistemaAlocacaoDeCarro
             {
                 Introducao();
 
-                Console.WriteLine($"Você deseja alocar o carro? 1 - sim   2 - não");
+                Console.WriteLine($"Deseja alocar o carro {FormatarNome(nomeDoCarro)}? 1 - sim   2 - não");
 
                 var opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
 

@@ -18,6 +18,9 @@ namespace exercicio_3
 
             Console.ReadKey();
         }
+        /// <summary>
+        /// Atribui valores à lista de alunos.
+        /// </summary>
         public static void CarregarLista()
         {
             listaAlunos = new string[20, 3]

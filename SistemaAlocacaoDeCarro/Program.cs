@@ -14,18 +14,19 @@ namespace SistemaAlocacaoDeCarro
         {
             CarregaListaDeCarros();
 
-            var opcaoMenu = MenuInicial();
+            var opcaoMenu = 0;
 
             while (opcaoMenu != 5)
             {
+                while (opcaoMenu > 5 || opcaoMenu < 1)
+                {
+                    opcaoMenu = MenuInicial();
+                }
+
                 MetodoPrincipal(opcaoMenu);
 
                 if (opcaoMenu == 1 || opcaoMenu == 2 || opcaoMenu == 3)
                 {
-                    Introducao();
-
-                    MostrarLista();
-
                     LerTecla();
 
                     opcaoMenu = MenuInicial();
@@ -77,7 +78,9 @@ namespace SistemaAlocacaoDeCarro
             Console.WriteLine("3 - Atualizar lista de carros");
             Console.WriteLine("4 - SUPER ANIMAÇÃO AUTOMOBILISTICA!!!");
             Console.WriteLine("5 - Sair do sistema");
+
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
+
             return opcao;
         }
         /// <summary>
@@ -85,20 +88,20 @@ namespace SistemaAlocacaoDeCarro
         /// </summary>
         /// <param name="nomeCarro">Nome do carro a ser pesquisado.</param>
         /// <returns>Retorna um inteiro representando a situação do carro.</returns>
-        public static int PesquisarCarro(string nomeCarro)
+        public static bool? PesquisarCarro(string nomeCarro)
         {
             for (int i = 0; i < ListaDeCarros.GetLength(0); i++)
             {
-                if (nomeCarro.ToUpper() == ListaDeCarros[i, 0].ToUpper())
+                if (ComparaNomes(nomeCarro, ListaDeCarros[i, 0]))
                 {
                     if (ListaDeCarros[i, 2] == "Sim")
-                        return 1;
+                        return true;
                     else
-                        return 2;
+                        return false;
                 }
             }
 
-            return 3;
+            return null;
         }
         /// <summary>
         /// Método responsável para atualizar a lista de carros sempre que o usuário realiza uma alocação.
@@ -110,7 +113,7 @@ namespace SistemaAlocacaoDeCarro
 
             for (int i = 0; i < ListaDeCarros.GetLength(0); i++)
             {
-                if (carro == ListaDeCarros[i, 0].ToUpper())
+                if (ComparaNomes(carro,ListaDeCarros[i,0]))
                 {
                     ListaDeCarros[i, 2] = alocar? "Não" : "Sim";
                 }
@@ -134,6 +137,8 @@ namespace SistemaAlocacaoDeCarro
         /// </summary>
         public static void LerTecla()
         {
+            MostrarLista();
+
             Console.WriteLine("\r\nPressione qualquer tecla para continuar:");
 
             Console.ReadKey();
@@ -144,12 +149,6 @@ namespace SistemaAlocacaoDeCarro
         /// <param name="opcaoMenu">Opção escolhida pelo usuário.</param>
         public static void MetodoPrincipal(int opcaoMenu)
         {
-            while (opcaoMenu != 1 && opcaoMenu != 2 && opcaoMenu != 3 && opcaoMenu != 4)
-            {
-                Introducao();
-                Console.WriteLine("Opção inválida! Tente novamente.");
-                opcaoMenu = MenuInicial();
-            }
             if (opcaoMenu == 1)
             {
                 AlocarCarro();
@@ -177,8 +176,9 @@ namespace SistemaAlocacaoDeCarro
             Console.WriteLine("Digite o nome do carro desejado: ");
 
             var nomeDoCarro = Console.ReadLine();
+            var resultadoPesquisa = PesquisarCarro(nomeDoCarro);
 
-            if (PesquisarCarro(nomeDoCarro) == 1)
+            if (resultadoPesquisa != null && resultadoPesquisa == true)
             {
                 Introducao();
 
@@ -197,29 +197,25 @@ namespace SistemaAlocacaoDeCarro
                 {
                     AtualizaSistema(nomeDoCarro, true);
                     Introducao();
-                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} alocado com sucesso!");
-                    LerTecla();
+                    Console.WriteLine($"{FormatarNome(nomeDoCarro)} alocado com sucesso!");
                 }
                 else
                 {
                     Introducao();
-                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} não alocado.");
-                    LerTecla();
+                    Console.WriteLine($"{FormatarNome(nomeDoCarro)} não alocado.");
                 }
             }
-            else if (PesquisarCarro(nomeDoCarro) == 2)
+            else if (PesquisarCarro(nomeDoCarro) == false)
             {
                 Introducao();
 
-                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} não está disponível para alocação!");
-                LerTecla();
+                Console.WriteLine($"O carro {FormatarNome(nomeDoCarro)} não está disponível para alocação!");
             }
             else
             {
                 Introducao();
 
-                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} não foi encontrado no sistema!");
-                LerTecla();
+                Console.WriteLine($"O carro {FormatarNome(nomeDoCarro)} não foi encontrado no sistema!");
             }
         }
         /// <summary>
@@ -233,12 +229,13 @@ namespace SistemaAlocacaoDeCarro
             Console.WriteLine("Digite o nome do carro a ser devolvido: ");
 
             var nomeDoCarro = Console.ReadLine();
+            var resultadoPesquisa = PesquisarCarro(nomeDoCarro);
 
-            if (PesquisarCarro(nomeDoCarro) == 2)
+            if (resultadoPesquisa != null && resultadoPesquisa == false)
             {
                 Introducao();
 
-                Console.WriteLine($"Você deseja devolver o carro {nomeDoCarro}? 1 - sim   2 - não");
+                Console.WriteLine($"Você deseja devolver o carro {FormatarNome(nomeDoCarro)}? 1 - sim   2 - não");
 
                 var opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
 
@@ -246,36 +243,32 @@ namespace SistemaAlocacaoDeCarro
                 {
                     Introducao();
                     Console.WriteLine("Opção inválida! Tente novamente.");
-                    Console.WriteLine($"Você deseja devolver o carro {nomeDoCarro}? 1 - sim   2 - não");
+                    Console.WriteLine($"Você deseja devolver o carro {FormatarNome(nomeDoCarro)}? 1 - sim   2 - não");
                     opcaoAlocacao = Console.ReadKey().KeyChar.ToString();
                 }
                 if (opcaoAlocacao == "1")
                 {
                     AtualizaSistema(nomeDoCarro, false);
                     Introducao();
-                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} devolvido com sucesso!");
-                    LerTecla();
+                    Console.WriteLine($"{FormatarNome(nomeDoCarro)} devolvido com sucesso!");
                 }
                 else
                 {
                     Introducao();
-                    Console.WriteLine($"{UppercaseFirst(nomeDoCarro)} não devolvido.");
-                    LerTecla();
+                    Console.WriteLine($"{FormatarNome(nomeDoCarro)} não devolvido.");
                 }
             }
-            else if (PesquisarCarro(nomeDoCarro) == 1)
+            else if (PesquisarCarro(nomeDoCarro) == true)
             {
                 Introducao();
 
-                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} já foi devolvido!");
-                LerTecla();
+                Console.WriteLine($"O carro {FormatarNome(nomeDoCarro)} já foi devolvido!");
             }
             else
             {
                 Introducao();
 
-                Console.WriteLine($"O carro {UppercaseFirst(nomeDoCarro)} não foi encontrado no sistema!");
-                LerTecla();
+                Console.WriteLine($"O carro {FormatarNome(nomeDoCarro)} não foi encontrado no sistema!");
             }
         }
         /// <summary>
@@ -289,64 +282,73 @@ namespace SistemaAlocacaoDeCarro
 
             MostrarLista();
 
-            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcaoLinha);
+            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
+            var opcaoLinha = VerificaEscolha(opcao, 5);
+            opcaoLinha = opcaoLinha - 1;
 
-            while (opcaoLinha > ListaDeCarros.GetLength(0) || opcaoLinha < 1)
+            int opcaoColuna = 0;
+
+            while (opcaoColuna > 3 || opcaoColuna < 1)
             {
                 Introducao();
 
-                Console.WriteLine("Opção inválida! Tente novamente:");
+                Console.WriteLine($"{opcaoLinha + 1} - Nome: {ListaDeCarros[opcaoLinha, 0]}, " +
+                    $"ano: {ListaDeCarros[opcaoLinha, 1]}, " +
+                    $"disponível: {ListaDeCarros[opcaoLinha, 2]}.");
 
-                MostrarLista();
+                Console.WriteLine("\r\nInforme o dado que deseja modificar:");
+                Console.WriteLine("1 - Nome   2 - Ano   3 - Disponibilidade");
 
-                int.TryParse(Console.ReadKey().KeyChar.ToString(), out opcaoLinha);
+                int.TryParse(Console.ReadKey().KeyChar.ToString(), out opcaoColuna);
             }
-
-            opcaoLinha = opcaoLinha - 1;
-
-            Introducao();
-
-            Console.WriteLine($"{opcaoLinha + 1} - Nome: {ListaDeCarros[opcaoLinha, 0]}, " +
-                $"ano: {ListaDeCarros[opcaoLinha, 1]}, " +
-                $"disponível: {ListaDeCarros[opcaoLinha, 2]}.");
-
-            Console.WriteLine("\r\nInforme o dado que deseja modificar:");
-            Console.WriteLine("1 - Nome   2 - Ano   3 - Disponibilidade");
-
-            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcaoColuna);
-
+            
             Introducao();
 
             if (opcaoColuna == 1)
             {
                 Console.WriteLine("Informe o nome do carro:");
-                ListaDeCarros[opcaoLinha, 0] = UppercaseFirst(Console.ReadLine());
+                ListaDeCarros[opcaoLinha, 0] = FormatarNome(Console.ReadLine());
             }
             else if(opcaoColuna == 2)
             {
                 Console.WriteLine("Informe o ano do carro:");
-                ListaDeCarros[opcaoLinha, 1] = UppercaseFirst(Console.ReadLine());
+                ListaDeCarros[opcaoLinha, 1] = FormatarNome(Console.ReadLine());
             }
             else if (opcaoColuna == 3)
             {
                 Console.WriteLine("Informe a disponibilidade do carro: 1 - sim   2 - não");
 
-                int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcaoDisponibilidade);
+                int opcaoDisponibilidade = 666;
 
                 while (opcaoDisponibilidade != 1 && opcaoDisponibilidade != 2)
                 {
                     Introducao();
 
-                    Console.WriteLine("Opção inválida! Tente novamente:");
                     Console.WriteLine("\r\nInforme a disponibilidade do carro: 1 - sim   2 - não");
 
                     int.TryParse(Console.ReadKey().KeyChar.ToString(), out opcaoDisponibilidade);
                 }
 
                 if (opcaoDisponibilidade == 1)
-                    ListaDeCarros[opcaoLinha, 2] = "Sim";
+                {
+                    if (PesquisarCarro(ListaDeCarros[opcaoLinha, 0]) == true)
+                        Console.WriteLine("\rO carro já estava disponível!");
+                    else
+                    {
+                        Console.WriteLine("\rAlterado com sucesso!");
+                        ListaDeCarros[opcaoLinha, 2] = "Sim";
+                    }
+                }
                 else
-                    ListaDeCarros[opcaoLinha, 2] = "Não";
+                {
+                    if (PesquisarCarro(ListaDeCarros[opcaoLinha, 0]) == false)
+                        Console.WriteLine("\rO carro já estava indisponível!");
+                    else
+                    {
+                        Console.WriteLine("\rAlterado com sucesso!");
+                        ListaDeCarros[opcaoLinha, 2] = "Não";
+                    }
+                }
             }
         }
         /// <summary>
@@ -410,22 +412,50 @@ namespace SistemaAlocacaoDeCarro
         /// <summary>
         /// Transforma uma palavra de modo que sua primeira letra seja maiúscula e as outras minúsculas.
         /// </summary>
-        /// <param name="s">Palavra escolhida.</param>
+        /// <param name="nome">Palavra escolhida.</param>
         /// <returns>Retorna a palavra com as modificações especificadas.</returns>
-        public static string UppercaseFirst(string s)
+        public static string FormatarNome(string nome)
         {
-            if (string.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(nome))
             {
                 return string.Empty;
             }
 
-            char[] a = s.ToCharArray();
+            char[] letra = nome.ToCharArray();
 
-            for (int i = 0; i < a.Length; i++)
-                a[i] = char.ToLower(a[i]);
+            for (int i = 0; i < letra.Length; i++)
+                letra[i] = char.ToLower(letra[i]);
 
-            a[0] = char.ToUpper(a[0]);
-            return new string(a);
+            letra[0] = char.ToUpper(letra[0]);
+            return new string(letra).Replace(" ","");
+        }
+        /// <summary>
+        /// Compara duas strings deixando-as em letras minúsculas e removendos espaços.
+        /// </summary>
+        /// <param name="primeiro">Primeira string a ser comparada.</param>
+        /// <param name="segundo">Segunda string a ser comparada.</param>
+        /// <returns>Retorna o resultado da comparação.</returns>
+        public static bool ComparaNomes(string primeiro, string segundo)
+        {
+            if (primeiro.ToLower().Replace(" ", "") == segundo.ToLower().Replace(" ",""))
+                return true;
+
+            return false;
+        }
+        /// <summary>
+        /// Verifica se a escolha do usuário é válida.
+        /// </summary>
+        /// <param name="escolha">Escolha definida pelo usuário.</param>
+        /// <param name="tamanho">Limite de escolha.</param>
+        /// <returns>Retorna se a escolha é válida ou não.</returns>
+        public static int VerificaEscolha(int escolha, int tamanho)
+        {
+            while (escolha > tamanho || escolha < 1)
+            {
+                int.TryParse(Console.ReadKey().KeyChar.ToString(), out escolha);
+            }
+
+            return escolha;
         }
         /// <summary>
         /// Finaliza o programa...

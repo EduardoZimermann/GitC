@@ -81,11 +81,11 @@ namespace SistemaBibliotecaOnlineNasaUltraPower3000
         /// </summary>
         /// <param name="nomeLivro">Nome do livro a ser pesquisado.</param>
         /// <returns>Retorna verdadeiro em caso o livro estiver disponível.</returns>
-        public static bool PesquisaLivroParaAlocacao(string nomeLivro)
+        public static bool? PesquisaLivroParaAlocacao(string nomeLivro)
         {
             for (int i = 0; i < baseDeLivros.GetLength(0); i++)
             {
-                if (nomeLivro == baseDeLivros[i, 0])
+                if (CompararNomes(nomeLivro, baseDeLivros[i, 0]))
                 {
                     Console.WriteLine($"O livro '{nomeLivro}' pode ser alocado? {baseDeLivros[i, 1]}");
 
@@ -93,7 +93,20 @@ namespace SistemaBibliotecaOnlineNasaUltraPower3000
                 }
             }
 
-            return false;
+            Console.WriteLine("Nenhum livro encontrado! Deseja realizar a busca novamente?");
+            Console.WriteLine("Digite o número da opção desejada: 1 - sim   2 - não");
+
+            int.TryParse(Console.ReadKey().KeyChar.ToString(), out var opcao);
+
+            if (opcao == 1)
+            {
+                Console.WriteLine("Digite o nome do livro a ser pesquisado:");
+                nomeLivro = Console.ReadLine();
+
+                return PesquisaLivroParaAlocacao(nomeLivro);
+            }
+
+            return null;
         }
         /// <summary>
         /// Método que aloca o livro de acordo com o parâmetro passado.
@@ -104,9 +117,9 @@ namespace SistemaBibliotecaOnlineNasaUltraPower3000
         {
             for (int i = 0; i < baseDeLivros.GetLength(0); i++)
             {
-                if (nomeLivro == baseDeLivros[i, 0])
+                if (CompararNomes(nomeLivro, baseDeLivros[i, 0]))
                 {
-                    baseDeLivros[i, 1] = alocar? "Não!" : "Sim!";
+                    baseDeLivros[i, 1] = alocar ? "Não!" : "Sim!";
                 }
             }
 
@@ -122,7 +135,9 @@ namespace SistemaBibliotecaOnlineNasaUltraPower3000
             MostrarMenuInicialLivros("Alocar um livro:");
 
             var nomeDoLivro = Console.ReadLine();
-            if (PesquisaLivroParaAlocacao(nomeDoLivro))
+            var resultadoPesquisa = PesquisaLivroParaAlocacao(nomeDoLivro);
+
+            if (resultadoPesquisa != null && resultadoPesquisa == false)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
@@ -155,7 +170,9 @@ namespace SistemaBibliotecaOnlineNasaUltraPower3000
             MostrarListaDeLivros();
 
             var nomeDoLivro = Console.ReadLine();
-            if (!PesquisaLivroParaAlocacao(nomeDoLivro))
+            var resultadoPesquisa = PesquisaLivroParaAlocacao(nomeDoLivro);
+
+            if (resultadoPesquisa != null && resultadoPesquisa == false)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
@@ -176,6 +193,19 @@ namespace SistemaBibliotecaOnlineNasaUltraPower3000
 
             Console.WriteLine($"Menu - {operacao}");
             Console.WriteLine("Digite o nome do livro para realizar a operação:");
+        }
+        /// <summary>
+        /// Método que compara duas string deixando em caixa baixa e removendo espaços vazio dentro da mesma.
+        /// </summary>
+        /// <param name="primeiro">Primeira string a ser comparada.</param>
+        /// <param name="segundo">Segunda string a ser comparada</param>
+        /// <returns>Retorna o resultado desta comparação.</returns>
+        public static bool CompararNomes(string primeiro, string segundo)
+        {
+            if (primeiro.ToLower().Replace(" ", "") == segundo.ToLower().Replace(" ", ""))
+                return true;
+
+            return false;
         }
     }
 }

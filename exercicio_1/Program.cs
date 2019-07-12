@@ -13,7 +13,7 @@ namespace Exercicio1
             Console.WriteLine("Informe o nome: ");
             var nome = Console.ReadLine();
             Console.WriteLine("Informe sua idade: ");
-            var idade = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out int idade);
 
             Console.Clear();
 

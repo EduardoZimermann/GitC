@@ -77,9 +77,23 @@ namespace ProjetoFinalConsole
 
             Console.WriteLine("\r\nDigite o nome do livro:");
             var nomeLivro = Console.ReadLine();
+            //Se o usuário não digitar nada, o sistema vai repetir a mensagem até receber um nome válido.
+            while (string.IsNullOrEmpty(nomeLivro) || string.IsNullOrWhiteSpace(nomeLivro))
+            {
+                Console.WriteLine("\r\nDigite o nome do livro:");
+                nomeLivro = Console.ReadLine();
 
-            Console.WriteLine("Digite o nome do autor do livro:");
+            }
+
+            Console.WriteLine("Digite o nome do autor:");
             var nomeAutor = Console.ReadLine();
+            //A mesma verificação feita anteriormente
+            while (string.IsNullOrEmpty(nomeAutor) || string.IsNullOrWhiteSpace(nomeAutor))
+            {
+                Console.WriteLine("\r\nDigite o nome do autor:");
+                nomeAutor = Console.ReadLine();
+
+            }
 
             for (int i = 0; i < ListaDeLivros.GetLength(0); i++)
             {
@@ -191,6 +205,10 @@ namespace ProjetoFinalConsole
 
             Console.WriteLine("Opção inválida!");
         }
+        /// <summary>
+        /// Padroniza a string chamada nesta função.
+        /// </summary>
+        /// <param name="titulo">String a ser padronizada.</param>
         public static void FormatarTitulo(string titulo)
         {
             Console.WriteLine("--------------------------------------------");

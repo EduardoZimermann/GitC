@@ -1,4 +1,0 @@
-﻿CREATE TABLE [dbo].[AulaCSharp]
-(
-	[Id] INT NOT NULL PRIMARY KEY
-)

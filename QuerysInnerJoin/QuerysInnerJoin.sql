@@ -26,9 +26,12 @@ select
 go
 --Trazer somente a quantidade de marcas que Felipe e Giomar cadastraram
 select
-		count(Id) as 'Quantidade de Marcas'
-	from Marcas
-	where UsuInc between 1 and 2;
+		us.Usuario,
+		count(ma.Id) as 'Quantidade de Marcas'
+	from Marcas ma
+	inner join Usuarios us on ma.UsuInc = us.Id
+	where ma.UsuInc between 1 and 2
+	group by us.Usuario;
 go
 --Trazer somente os carros que Felipe cadastrou
 select
@@ -58,9 +61,12 @@ select
 go
 --Trazer somente a quantidade de carros que Felipe e Giomar cadastraram 
 select
-		count(Id) as 'Quantidade de Carros'
-	from Carros
-	where UsuInc between 1 and 2;
+		us.Usuario,
+		count(ca.Id) as 'Quantidade de Carros'
+	from Carros ca
+	inner join Usuarios us on ca.UsuInc = us.Id
+	where ca.UsuInc between 1 and 2
+	group by us.Usuario;
 go
 --Trazer somente os carros das marcas que Felipe cadastrou
 select
@@ -164,17 +170,23 @@ select
 go
 --Trazer a quantidade total de vendas que Felipe e Giomar realizaram ordenando do maior para menor
 select
-		sum(Quantidade) as 'Quantidade de Vendas'
-	from Vendas
-	where UsuInc between 1 and 2
-	order by sum(Quantidade) desc;
+		us.Usuario,
+		sum(ve.Quantidade) as 'Quantidade de Vendas'
+	from Vendas ve
+	inner join Usuarios us on ve.UsuInc = us.Id
+	where ve.UsuInc between 1 and 2
+	group by us.Usuario
+	order by sum(ve.Quantidade) desc;
 go
 --Trazer o valor de vendas que Felipe e Giomar realizaram ordenando do maior para menor
 select
-		sum(Valor * Quantidade) as 'Valor de Vendas'
-	from Vendas
-	where UsuInc between 1 and 2
-	order by sum(Valor * Quantidade) desc;
+		us.Usuario,
+		sum(ve.Valor * ve.Quantidade) as 'Valor de Vendas'
+	from Vendas ve
+	inner join Usuarios us on ve.UsuInc = us.Id
+	where ve.UsuInc between 1 and 2
+	group by us.Usuario
+	order by sum(ve.Valor * ve.Quantidade) desc;
 go
 --Trazer  a marca mais vendida de todos os anos
 	--	- Tradução "Retornar todas as marcas que foram vendidas mas ordernada da maior para menor"

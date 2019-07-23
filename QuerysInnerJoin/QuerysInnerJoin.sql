@@ -192,38 +192,38 @@ go
 	--	- Tradução "Retornar todas as marcas que foram vendidas mas ordernada da maior para menor"
 select
 		ma.Nome,
-		sum(Quantidade) as 'Quantidade de Vendas'
+		sum(ve.Quantidade) as 'Quantidade de Vendas'
 	from Vendas ve
 	inner join Carros ca on ve.Carro = ca.Id
 	inner join Marcas ma on ca.Marca = ma.Id
 	group by ma.Nome
-	order by sum(Quantidade) desc;
+	order by sum(ve.Quantidade) desc;
 --Trazer o valor total da marca mais vendida de todos os anos
 select
 		ma.Nome,
-		sum(Valor * Quantidade) as 'Valor de Vendas'
+		sum(ve.Valor * ve.Quantidade) as 'Valor de Vendas'
 	from Vendas ve
 	inner join Carros ca on ve.Carro = ca.Id
 	inner join Marcas ma on ca.Marca = ma.Id
 	group by ma.Nome
-	order by sum(Valor * Quantidade) desc;
+	order by sum(ve.Valor * ve.Quantidade) desc;
 go
 --Trazer a quantidade do carro mais vendido de todos os anos
 select
 		ca.Modelo,
-		sum(Quantidade) as 'Quantidade de Vendas'
+		sum(ve.Quantidade) as 'Quantidade de Vendas'
 	from Vendas ve
 	inner join Carros ca on ve.Carro = ca.Id
 	group by ca.Modelo
-	order by sum(Quantidade) desc;
+	order by sum(ve.Quantidade) desc;
 go
 --Trazer o valor do carro mais vendido de todos os anos
 select
 		ca.Modelo,
-		sum(Valor * Quantidade) as 'Valor de Vendas'
+		sum(ve.Valor * ve.Quantidade) as 'Valor de Vendas'
 	from Vendas ve
 	inner join Carros ca on ve.Carro = ca.Id
 	group by ca.Modelo
-	order by sum(Valor * Quantidade) desc;
+	order by sum(ve.Valor * ve.Quantidade) desc;
 
 --FIM =)

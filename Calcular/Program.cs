@@ -24,8 +24,15 @@ namespace Calcular
 
             Console.WriteLine($"\r\nMultiplicação: {calc.Multiplicacao(valor1, valor2)}");
 
-            Console.WriteLine($"\r\nDivisão: {calc.Divisao(valor1, valor2)}");
-
+            try
+            {
+                Console.WriteLine($"\r\nDivisão: {calc.Divisao(valor1, valor2)}");
+            }
+            catch
+            {
+                Console.WriteLine("\r\nDivisão: Num deu!");
+            }
+            
             Console.ReadKey();
         }
     }

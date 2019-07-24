@@ -15,15 +15,17 @@ namespace Calcular
 
             Console.WriteLine("Informe dois número e obtenha o resultado de cada operação:");
 
-            try
-            {
-                calc.Resultado(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
-            }
-            catch
-            {
-                Console.WriteLine("\r\nAlgo deu errado!!! =( =( =(");
-            }
-            
+            int.TryParse(Console.ReadLine(), out int valor1);
+            int.TryParse(Console.ReadLine(), out int valor2);
+
+            Console.WriteLine($"\r\nAdição: {calc.Adicao(valor1, valor2)}");
+
+            Console.WriteLine($"\r\nSubtração: {calc.Subtracao(valor1, valor2)}");
+
+            Console.WriteLine($"\r\nMultiplicação: {calc.Multiplicacao(valor1, valor2)}");
+
+            Console.WriteLine($"\r\nDivisão: {calc.Divisao(valor1, valor2)}");
+
             Console.ReadKey();
         }
     }

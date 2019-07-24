@@ -4,12 +4,21 @@ namespace Calculo
 {
     public class Calculadora
     {
-        public void Resultado(int n1, int n2)
+        public int Adicao(int n1, int n2)
         {
-            Console.WriteLine($"\r\nAdição: {n1 + n2}");
-            Console.WriteLine($"\r\nSubtração: {n1 - n2}");
-            Console.WriteLine($"\r\nMultiplicação: {n1 * n2}");
-            Console.WriteLine($"\r\nDivisão: {n1 / n2}");
+            return n1 + n2;
+        }
+        public int Subtracao(int n1, int n2)
+        {
+            return n1 - n2;
+        }
+        public int Multiplicacao(int n1, int n2)
+        {
+            return n1 * n2;
+        }
+        public int Divisao(int n1, int n2)
+        {
+            return n1 / n2;
         }
     }
 }

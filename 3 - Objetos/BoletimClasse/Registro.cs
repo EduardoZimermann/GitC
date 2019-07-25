@@ -78,6 +78,8 @@ namespace BoletimClasse
         {
             Console.Clear();
 
+            Console.WriteLine("\r\n   ID |         Aluno |   Média |    Frequência |        Situação");
+
             for (int i = 0; i < aluno.GetLength(0); i++)
             {
                 if (!string.IsNullOrEmpty(aluno[i, 0]) && !string.IsNullOrWhiteSpace(aluno[i,0]))
@@ -85,19 +87,13 @@ namespace BoletimClasse
                     string situacao;
 
                     if (double.Parse(aluno[i, 2]) >= 7 && int.Parse(aluno[i, 3]) >= 75)
-                        situacao = "Aprovado. Parabéns!!! =) =)";
+                        situacao = "Aprovado!";
                     else
-                        situacao = "Reprovado. =(";
+                        situacao = "Reprovado.";
 
-                    Console.WriteLine($"Id: {aluno[i, 0]}");
-                    Console.WriteLine($"Aluno: {aluno[i, 1]}");
-                    Console.WriteLine($"Média: {string.Format("{0:0.00}", double.Parse(aluno[i, 2]))}");
-                    Console.WriteLine($"Frequência: {aluno[i, 3]}%");
-                    Console.WriteLine($"{situacao}\r\n");
+                    Console.WriteLine(string.Format("{0,5} | {1,13} | {2,7} | {3,12}% | {4,15}", aluno[i, 0], aluno[i, 1], string.Format("{0:0.00}", double.Parse(aluno[i, 2])), aluno[i, 3], situacao));
                 }
             }
-
-            Console.ReadKey();
         }
 
         /// <summary>
@@ -105,20 +101,9 @@ namespace BoletimClasse
         /// </summary>
         public void ExcluirRegistro()
         {
-            Console.Clear();
+            MostrarInformacoes();
 
-            for (int i = 0; i < aluno.GetLength(0); i++)
-            {
-                if (!string.IsNullOrEmpty(aluno[i, 0]) || !string.IsNullOrWhiteSpace(aluno[i, 0]))
-                {
-                    Console.WriteLine($"Id: {aluno[i, 0]}");
-                    Console.WriteLine($"Aluno: {aluno[i, 1]}");
-                    Console.WriteLine($"Média: {string.Format("{0:0.00}", aluno[i, 2])}");
-                    Console.WriteLine($"Frequência: {aluno[i, 3]}%\r\n");
-                }
-            }
-
-            Console.WriteLine("Informe o Id do registro que desejas excluir:");
+            Console.WriteLine("\r\nInforme o Id do registro que desejas excluir:");
             int.TryParse(Console.ReadLine(), out int opcaoExcluir);
 
             aluno[opcaoExcluir, 0] = null;
@@ -132,20 +117,9 @@ namespace BoletimClasse
         /// </summary>
         public void AlterarRegistro()
         {
-            Console.Clear();
+            MostrarInformacoes();
 
-            for (int i = 0; i < aluno.GetLength(0); i++)
-            {
-                if (!string.IsNullOrEmpty(aluno[i, 0]) && !string.IsNullOrWhiteSpace(aluno[i, 0]))
-                {
-                    Console.WriteLine($"Id: {aluno[i, 0]}");
-                    Console.WriteLine($"Aluno: {aluno[i, 1]}");
-                    Console.WriteLine($"Média: {string.Format("{0:0.00}", aluno[i, 2])}");
-                    Console.WriteLine($"Frequência: {aluno[i, 3]}%\r\n");
-                }
-            }
-
-            Console.WriteLine("Informe o Id do registro que desejas alterar:");
+            Console.WriteLine("\r\nInforme o Id do registro que desejas alterar:");
             int.TryParse(Console.ReadLine(), out int opcaoAlterar);
 
             Console.WriteLine("Informe o nome deste aluno:");

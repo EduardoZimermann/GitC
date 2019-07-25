@@ -33,6 +33,7 @@ namespace BoletimClasse
                         break;
                     case 4:
                         aluno.MostrarInformacoes();
+                        Console.ReadKey();
                         break;
                 }
             }

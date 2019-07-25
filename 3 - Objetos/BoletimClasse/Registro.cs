@@ -8,7 +8,7 @@ namespace BoletimClasse
 {
     class Registro
     {
-        private string[,] aluno = new string[1,4];
+        private string[,] aluno = new string[1,5];
 
         private Boletim boletim = new Boletim();
 
@@ -60,7 +60,7 @@ namespace BoletimClasse
 
             var listaCopia = aluno;
 
-            aluno = new string[aluno.GetLength(0) + 1, 4];
+            aluno = new string[aluno.GetLength(0) + 1, 5];
 
             for (int i = 0; i < listaCopia.GetLength(0); i++)
             {
@@ -68,6 +68,7 @@ namespace BoletimClasse
                 aluno[i, 1] = listaCopia[i, 1];
                 aluno[i, 2] = listaCopia[i, 2];
                 aluno[i, 3] = listaCopia[i, 3];
+                aluno[i, 4] = listaCopia[i, 4];
             }
         }
 
@@ -84,14 +85,9 @@ namespace BoletimClasse
             {
                 if (!string.IsNullOrEmpty(aluno[i, 0]) && !string.IsNullOrWhiteSpace(aluno[i,0]))
                 {
-                    string situacao;
+                    aluno[i,4] = boletim.RetornaSituacao(aluno[i, 2], aluno[i, 3]);
 
-                    if (double.Parse(aluno[i, 2]) >= 7 && int.Parse(aluno[i, 3]) >= 75)
-                        situacao = "Aprovado!";
-                    else
-                        situacao = "Reprovado.";
-
-                    Console.WriteLine(string.Format("{0,5} | {1,13} | {2,7} | {3,12}% | {4,15}", aluno[i, 0], aluno[i, 1], string.Format("{0:0.00}", double.Parse(aluno[i, 2])), aluno[i, 3], situacao));
+                    Console.WriteLine(string.Format("{0,5} | {1,13} | {2,7} | {3,12}% | {4,15}", aluno[i, 0], aluno[i, 1], string.Format("{0:0.00}", double.Parse(aluno[i, 2])), aluno[i, 3], aluno[i, 4]));
                 }
             }
         }

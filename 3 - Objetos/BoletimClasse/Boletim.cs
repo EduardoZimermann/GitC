@@ -30,5 +30,13 @@ namespace BoletimClasse
         {
             return ((aulas - faltas) * 100) / aulas;
         }
+
+        public string RetornaSituacao(string media, string frequencia)
+        {
+            if (double.Parse(media) >= 7 && int.Parse(frequencia) >= 75)
+                return "Aprovado!";
+
+            return "Reprovado!";
+        }
     }
 }

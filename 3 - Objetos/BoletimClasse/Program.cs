@@ -10,17 +10,48 @@ namespace BoletimClasse
     {
         static void Main(string[] args)
         {
-            Boletim aluno = new Boletim();
+            var aluno = new Registro();
 
-            Console.WriteLine("Informe as 3 notas do aluno:");
+            var opcao = 0;
 
-            var media = aluno.CalcularMedia(double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()));
+            while(opcao != 5)
+            {
+                Console.Clear();
 
-            Console.WriteLine("Informe o total de aulas e o número de faltas do aluno:");
+                opcao = Menu();
 
-            var frequencia = aluno.CalcularFrequencia(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
+                switch (opcao)
+                {
+                    case 1:
+                        aluno.RegistrarAluno();
+                        break;
+                    case 2:
+                        aluno.AlterarRegistro();
+                        break;
+                    case 3:
+                        aluno.ExcluirRegistro();
+                        break;
+                    case 4:
+                        aluno.MostrarInformacoes();
+                        break;
+                }
+            }
+        }
 
-            aluno.MostrarInformacoes(media, frequencia);
+        /// <summary>
+        /// Mostra o menu principal na tela do usuário.
+        /// </summary>
+        /// <returns>Retorna a opção escolhida pelo usuário.</returns>
+        public static int Menu()
+        {
+            Console.WriteLine("Escolha a opção desejada:");
+            Console.WriteLine("\r\n1 - Registrar aluno:");
+            Console.WriteLine("2 - Alterar registro:");
+            Console.WriteLine("3 - Excluir registro:");
+            Console.WriteLine("4 - Listar informações:");
+            Console.WriteLine("5 - Sair do sistema:");
+
+            return int.Parse(Console.ReadLine());
         }
     }
 }

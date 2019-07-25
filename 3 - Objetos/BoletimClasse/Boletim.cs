@@ -8,22 +8,30 @@ namespace BoletimClasse
 {
     class Boletim
     {
+        /// <summary>
+        /// Calcula a média de um aluno.
+        /// </summary>
+        /// <param name="nota1">Primeira nota.</param>
+        /// <param name="nota2">Segunda nota.</param>
+        /// <param name="nota3">Terceira nota.</param>
+        /// <returns>Retorna a média do aluno.</returns>
         public double CalcularMedia(double nota1, double nota2, double nota3)
         {
             return (nota1 + nota2 + nota3) / 3;
         }
 
+
+        /// <summary>
+        /// Calcula a frequência do aluno.
+        /// </summary>
+        /// <param name="aulas">Quantidade total de aulas.</param>
+        /// <param name="faltas">Quantidade de faltas do aluno.</param>
+        /// <returns>Retorna a porcentagem de frequência do aluno.</returns>
         public int CalcularFrequencia(int aulas, int faltas)
         {
             return ((aulas - faltas) * 100) / aulas;
         }
 
-        public void MostrarInformacoes(double media, int frequencia)
-        {
-            Console.Clear();
-            Console.WriteLine($"Média: {string.Format("{0:0.00}", media)}");
-            Console.WriteLine($"Frequência: {frequencia}%");
-            Console.ReadKey();
-        }
+        
     }
 }

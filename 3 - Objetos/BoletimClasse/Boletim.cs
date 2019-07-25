@@ -20,7 +20,6 @@ namespace BoletimClasse
             return (nota1 + nota2 + nota3) / 3;
         }
 
-
         /// <summary>
         /// Calcula a frequência do aluno.
         /// </summary>
@@ -31,7 +30,5 @@ namespace BoletimClasse
         {
             return ((aulas - faltas) * 100) / aulas;
         }
-
-        
     }
 }

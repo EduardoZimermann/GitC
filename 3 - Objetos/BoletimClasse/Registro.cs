@@ -106,10 +106,20 @@ namespace BoletimClasse
             Console.WriteLine("\r\nInforme o Id do registro que desejas excluir:");
             int.TryParse(Console.ReadLine(), out int opcaoExcluir);
 
-            aluno[opcaoExcluir, 0] = null;
-            aluno[opcaoExcluir, 1] = null;
-            aluno[opcaoExcluir, 2] = null;
-            aluno[opcaoExcluir, 3] = null;
+            try
+            {
+                aluno[opcaoExcluir, 0] = null;
+                aluno[opcaoExcluir, 1] = null;
+                aluno[opcaoExcluir, 2] = null;
+                aluno[opcaoExcluir, 3] = null;
+                Console.WriteLine("Registro excluido com sucesso!");
+                Console.ReadKey();
+            }
+            catch
+            {
+                Console.WriteLine("Aluno não encontrado!");
+                Console.ReadKey();
+            }
         }
 
         /// <summary>

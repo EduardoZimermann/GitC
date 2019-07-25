@@ -14,7 +14,7 @@ namespace BoletimClasse
 
             var opcao = 0;
 
-            while(opcao != 5)
+            while(opcao < 5 || opcao > 0)
             {
                 Console.Clear();
 
@@ -34,6 +34,9 @@ namespace BoletimClasse
                     case 4:
                         aluno.MostrarInformacoes();
                         Console.ReadKey();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
                         break;
                 }
             }

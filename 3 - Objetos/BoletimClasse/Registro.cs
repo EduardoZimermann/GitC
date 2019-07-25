@@ -79,7 +79,7 @@ namespace BoletimClasse
         {
             Console.Clear();
 
-            Console.WriteLine("\r\n   ID |         Aluno |   Média |    Frequência |        Situação");
+            Console.WriteLine("\r\n   ID |             Aluno |   Média |    Frequência |     Situação");
 
             for (int i = 0; i < aluno.GetLength(0); i++)
             {
@@ -87,7 +87,8 @@ namespace BoletimClasse
                 {
                     aluno[i,4] = boletim.RetornaSituacao(aluno[i, 2], aluno[i, 3]);
 
-                    Console.WriteLine(string.Format("{0,5} | {1,13} | {2,7} | {3,12}% | {4,15}", aluno[i, 0], aluno[i, 1], string.Format("{0:0.00}", double.Parse(aluno[i, 2])), aluno[i, 3], aluno[i, 4]));
+                    Console.WriteLine(string.Format("{0,5} | {1,17} | {2,7} | {3,12}% | {4,12}", 
+                        aluno[i, 0], aluno[i, 1], string.Format("{0:0.00}", double.Parse(aluno[i, 2])), aluno[i, 3], aluno[i, 4]));
                 }
             }
         }

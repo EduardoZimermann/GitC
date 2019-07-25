@@ -31,6 +31,12 @@ namespace BoletimClasse
             return ((aulas - faltas) * 100) / aulas;
         }
 
+        /// <summary>
+        /// Define a situação do aluno ("Aprovado" ou "Reprovado").
+        /// </summary>
+        /// <param name="media">Média do aluno.</param>
+        /// <param name="frequencia">Frequência percentual do aluno.</param>
+        /// <returns>Retorna a situação do aluno ("Aprovado" ou "Reprovado").</returns>
         public string RetornaSituacao(string media, string frequencia)
         {
             if (double.Parse(media) >= 7 && int.Parse(frequencia) >= 75)

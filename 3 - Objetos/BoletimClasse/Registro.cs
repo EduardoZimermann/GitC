@@ -103,20 +103,23 @@ namespace BoletimClasse
             Console.WriteLine("\r\nInforme o Id do registro que desejas excluir:");
             int.TryParse(Console.ReadLine(), out int opcaoExcluir);
 
-            try
+            for (int i = 0; i < aluno.GetLength(0); i++)
             {
-                aluno[opcaoExcluir, 0] = null;
-                aluno[opcaoExcluir, 1] = null;
-                aluno[opcaoExcluir, 2] = null;
-                aluno[opcaoExcluir, 3] = null;
-                Console.WriteLine("Registro excluido com sucesso!");
-                Console.ReadKey();
+                if (aluno[i,0] == opcaoExcluir.ToString())
+                {
+                    aluno[i, 0] = null;
+                    aluno[i, 1] = null;
+                    aluno[i, 2] = null;
+                    aluno[i, 3] = null;
+                    aluno[i, 4] = null;
+                    Console.WriteLine("Registro excluido com sucesso!");
+                    Console.ReadKey();
+                    return;
+                }
             }
-            catch
-            {
-                Console.WriteLine("Aluno não encontrado!");
-                Console.ReadKey();
-            }
+
+            Console.WriteLine("Aluno não encontrado!");
+            Console.ReadKey();
         }
 
         /// <summary>
@@ -129,14 +132,27 @@ namespace BoletimClasse
             Console.WriteLine("\r\nInforme o Id do registro que desejas alterar:");
             int.TryParse(Console.ReadLine(), out int opcaoAlterar);
 
-            Console.WriteLine("Informe o nome deste aluno:");
-            aluno[opcaoAlterar, 1] = Console.ReadLine();
+            for (int i = 0; i < aluno.GetLength(0); i++)
+            {
+                if (aluno[i, 0] == opcaoAlterar.ToString())
+                {
+                    Console.WriteLine("Informe o nome deste aluno:");
+                    aluno[opcaoAlterar, 1] = Console.ReadLine();
 
-            Console.WriteLine("Informe as 3 notas do aluno escolhido:");
-            aluno[opcaoAlterar, 2] = boletim.CalcularMedia(double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine())).ToString();
+                    Console.WriteLine("Informe as 3 notas do aluno escolhido:");
+                    aluno[opcaoAlterar, 2] = boletim.CalcularMedia(double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine())).ToString();
 
-            Console.WriteLine("Informe a quantidade de aulas e faltas do aluno escolhido:");
-            aluno[opcaoAlterar, 3] = boletim.CalcularFrequencia(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())).ToString();
+                    Console.WriteLine("Informe a quantidade de aulas e faltas do aluno escolhido:");
+                    aluno[opcaoAlterar, 3] = boletim.CalcularFrequencia(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())).ToString();
+
+                    Console.WriteLine("\r\nAlterado com sucesso!");
+                    Console.ReadKey();
+                    return;
+                }
+            }
+
+            Console.WriteLine("Aluno não encontrado!");
+            Console.ReadKey();
         }
     }
 }

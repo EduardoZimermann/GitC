@@ -16,6 +16,17 @@ namespace UsandoBibliotecaJoinha
             new AquiMostraJoinha().MetodoDoisPontoZero(true);
 
             new AquiMostraJoinha().MetodoDoisPontoZero(false);
+
+            var outroCaraParaRealizarOTeste = new AquiMostraJoinha().TesteUmOperadorLegal();
+
+            var tamanhoDaLista = outroCaraParaRealizarOTeste.Length;
+
+            for (int i = 0; i < tamanhoDaLista; i++)
+            {
+                Console.WriteLine(outroCaraParaRealizarOTeste[i]);
+            }
+
+            Console.ReadKey();
         }
     }
 }

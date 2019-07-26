@@ -13,6 +13,12 @@ namespace Calcular
         {
             var calc = new Calculadora();
 
+            double.TryParse(Console.ReadLine(), out double valor1);
+            double.TryParse(Console.ReadLine(), out double valor2);
+
+            Console.WriteLine(calc.Divisao(valor1,valor2));
+
+            /*
             Console.WriteLine("Informe dois número e obtenha o resultado de cada operação:");
 
             int.TryParse(Console.ReadLine(), out int valor1);
@@ -24,15 +30,8 @@ namespace Calcular
 
             Console.WriteLine($"\r\nMultiplicação: {calc.Multiplicacao(valor1, valor2)}");
 
-            try
-            {
-                Console.WriteLine($"\r\nDivisão: {calc.Divisao(valor1, valor2)}");
-            }
-            catch
-            {
-                Console.WriteLine("\r\nDivisão: Num deu!");
-            }
-            
+            Console.WriteLine($"\r\nDivisão: {calc.Divisao(valor1, valor2)}");*/
+
             Console.ReadKey();
         }
     }

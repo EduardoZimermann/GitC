@@ -25,6 +25,9 @@ namespace CadastroDeLanches
             TelaDeCadastro formCad = new TelaDeCadastro();
             formCad.ShowDialog();
             lanches.Add(formCad.novoLanche);
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = lanches;
         }
     }
 }

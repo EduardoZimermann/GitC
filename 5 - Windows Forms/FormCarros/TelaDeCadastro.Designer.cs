@@ -33,9 +33,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbxModelo = new System.Windows.Forms.TextBox();
             this.tbxPlaca = new System.Windows.Forms.TextBox();
-            this.tbxAno = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.numAno = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numAno)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -84,14 +85,6 @@
             this.tbxPlaca.Size = new System.Drawing.Size(147, 15);
             this.tbxPlaca.TabIndex = 4;
             // 
-            // tbxAno
-            // 
-            this.tbxAno.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxAno.Location = new System.Drawing.Point(87, 122);
-            this.tbxAno.Name = "tbxAno";
-            this.tbxAno.Size = new System.Drawing.Size(157, 15);
-            this.tbxAno.TabIndex = 5;
-            // 
             // btnSalvar
             // 
             this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -118,14 +111,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // numAno
+            // 
+            this.numAno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numAno.Location = new System.Drawing.Point(86, 121);
+            this.numAno.Name = "numAno";
+            this.numAno.Size = new System.Drawing.Size(158, 18);
+            this.numAno.TabIndex = 8;
+            // 
             // TelaDeCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 342);
+            this.Controls.Add(this.numAno);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSalvar);
-            this.Controls.Add(this.tbxAno);
             this.Controls.Add(this.tbxPlaca);
             this.Controls.Add(this.tbxModelo);
             this.Controls.Add(this.label3);
@@ -134,6 +135,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaDeCadastro";
             this.Text = "TelaDeCadastro";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TelaDeCadastro_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TelaDeCadastro_MouseMove);
+            ((System.ComponentModel.ISupportInitialize)(this.numAno)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,8 +150,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbxModelo;
         private System.Windows.Forms.TextBox tbxPlaca;
-        private System.Windows.Forms.TextBox tbxAno;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numAno;
     }
 }

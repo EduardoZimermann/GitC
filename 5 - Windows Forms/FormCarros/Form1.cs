@@ -13,9 +13,14 @@ namespace FormCarros
 {
     public partial class Form1 : Form
     {
+        int X = 0;
+        int Y = 0;
+
         public Form1()
         {
             InitializeComponent();
+            this.MouseDown += new MouseEventHandler(Form1_MouseDown);
+            this.MouseMove += new MouseEventHandler(Form1_MouseMove);
         }
 
         List<Carro> carro = new List<Carro>();
@@ -24,6 +29,9 @@ namespace FormCarros
         {
             TelaDeCadastro formCad = new TelaDeCadastro();
             formCad.ShowDialog();
+            if (formCad.VerificaValores(formCad.novoCarro.Modelo, formCad.novoCarro.Placa, formCad.novoCarro.Ano))
+                return;
+
             carro.Add(new Carro {
                 Id = carro.Count,
                 Modelo = formCad.novoCarro.Modelo,
@@ -100,6 +108,20 @@ namespace FormCarros
         private void Button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            X = this.Left - MousePosition.X;
+            Y = this.Top - MousePosition.Y;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            this.Left = X + MousePosition.X;
+            this.Top = Y + MousePosition.Y;
         }
     }
 }

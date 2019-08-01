@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataGridViewExample.Edicao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,13 +44,27 @@ namespace DataGridViewExample
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var carSelect = ((System.Data.DataRowView)
-                this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
-                as DataGridViewExample.ParteFinalLocadoraTSQLDataSet1.CarrosRow;
+            this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+            as DataGridViewExample.ParteFinalLocadoraTSQLDataSet1.CarrosRow;
 
             switch (e.ColumnIndex)
             {
                 case 0:
                     this.carrosTableAdapter.SetAtivoQuery(carSelect.Id);
+                    break;
+                case 1:
+                    frmEdicaoCarros editCarro = new frmEdicaoCarros();
+                    editCarro.CarrosRow = carSelect;
+                    editCarro.ShowDialog();
+
+                    this.carrosTableAdapter.Update(editCarro.CarrosRow);
+
+                        /*editCarro.CarrosRow.Marca,
+                        editCarro.CarrosRow.Modelo,
+                        editCarro.CarrosRow.Ano,
+                        editCarro.CarrosRow.UsuAlt,
+                        editCarro.CarrosRow.DatAlt = DateTime.Now,
+                        editCarro.CarrosRow.Id);*/
                     break;
             }
 

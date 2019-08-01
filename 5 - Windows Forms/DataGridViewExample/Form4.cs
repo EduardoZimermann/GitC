@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataGridViewExample.Edicao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,6 +35,13 @@ namespace DataGridViewExample
             {
                 case 0:
                     this.clientesTableAdapter.SetAtivoQuery(clienteSelect.Id);
+                    break;
+                case 1:
+                    frmEdicaoClientes editCliente = new frmEdicaoClientes();
+                    editCliente.clienteRow = clienteSelect;
+                    editCliente.ShowDialog();
+
+                    this.clientesTableAdapter.Update(editCliente.clienteRow);
                     break;
             }
 

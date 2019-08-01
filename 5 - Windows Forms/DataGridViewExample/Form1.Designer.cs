@@ -30,17 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.DeleteCommand = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modeloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.anoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ativoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.precoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.carrosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.parteFinalLocadoraTSQLDataSet1 = new DataGridViewExample.ParteFinalLocadoraTSQLDataSet1();
             this.button1 = new System.Windows.Forms.Button();
@@ -51,6 +40,18 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.DeleteCommand = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modeloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.precoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carrosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parteFinalLocadoraTSQLDataSet1)).BeginInit();
@@ -66,6 +67,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DeleteCommand,
+            this.editar,
             this.idDataGridViewTextBoxColumn,
             this.marcaDataGridViewTextBoxColumn,
             this.modeloDataGridViewTextBoxColumn,
@@ -86,105 +88,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(746, 340);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
-            // DeleteCommand
-            // 
-            this.DeleteCommand.DataPropertyName = "DeleteCollum";
-            this.DeleteCommand.HeaderText = "Deletar";
-            this.DeleteCommand.MinimumWidth = 6;
-            this.DeleteCommand.Name = "DeleteCommand";
-            this.DeleteCommand.ReadOnly = true;
-            this.DeleteCommand.Width = 125;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // marcaDataGridViewTextBoxColumn
-            // 
-            this.marcaDataGridViewTextBoxColumn.DataPropertyName = "Marca";
-            this.marcaDataGridViewTextBoxColumn.HeaderText = "Marca";
-            this.marcaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.marcaDataGridViewTextBoxColumn.Name = "marcaDataGridViewTextBoxColumn";
-            this.marcaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.marcaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // modeloDataGridViewTextBoxColumn
-            // 
-            this.modeloDataGridViewTextBoxColumn.DataPropertyName = "Modelo";
-            this.modeloDataGridViewTextBoxColumn.HeaderText = "Modelo";
-            this.modeloDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.modeloDataGridViewTextBoxColumn.Name = "modeloDataGridViewTextBoxColumn";
-            this.modeloDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modeloDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // anoDataGridViewTextBoxColumn
-            // 
-            this.anoDataGridViewTextBoxColumn.DataPropertyName = "Ano";
-            this.anoDataGridViewTextBoxColumn.HeaderText = "Ano";
-            this.anoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.anoDataGridViewTextBoxColumn.Name = "anoDataGridViewTextBoxColumn";
-            this.anoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.anoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // ativoDataGridViewCheckBoxColumn
-            // 
-            this.ativoDataGridViewCheckBoxColumn.DataPropertyName = "Ativo";
-            this.ativoDataGridViewCheckBoxColumn.HeaderText = "Ativo";
-            this.ativoDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            this.ativoDataGridViewCheckBoxColumn.Name = "ativoDataGridViewCheckBoxColumn";
-            this.ativoDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.ativoDataGridViewCheckBoxColumn.Width = 125;
-            // 
-            // precoDataGridViewTextBoxColumn
-            // 
-            this.precoDataGridViewTextBoxColumn.DataPropertyName = "Preco";
-            this.precoDataGridViewTextBoxColumn.HeaderText = "Preco";
-            this.precoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
-            this.precoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.precoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // usuIncDataGridViewTextBoxColumn
-            // 
-            this.usuIncDataGridViewTextBoxColumn.DataPropertyName = "UsuInc";
-            this.usuIncDataGridViewTextBoxColumn.HeaderText = "UsuInc";
-            this.usuIncDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usuIncDataGridViewTextBoxColumn.Name = "usuIncDataGridViewTextBoxColumn";
-            this.usuIncDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usuIncDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // usuAltDataGridViewTextBoxColumn
-            // 
-            this.usuAltDataGridViewTextBoxColumn.DataPropertyName = "UsuAlt";
-            this.usuAltDataGridViewTextBoxColumn.HeaderText = "UsuAlt";
-            this.usuAltDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usuAltDataGridViewTextBoxColumn.Name = "usuAltDataGridViewTextBoxColumn";
-            this.usuAltDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usuAltDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // datIncDataGridViewTextBoxColumn
-            // 
-            this.datIncDataGridViewTextBoxColumn.DataPropertyName = "DatInc";
-            this.datIncDataGridViewTextBoxColumn.HeaderText = "DatInc";
-            this.datIncDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.datIncDataGridViewTextBoxColumn.Name = "datIncDataGridViewTextBoxColumn";
-            this.datIncDataGridViewTextBoxColumn.ReadOnly = true;
-            this.datIncDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // datAltDataGridViewTextBoxColumn
-            // 
-            this.datAltDataGridViewTextBoxColumn.DataPropertyName = "DatAlt";
-            this.datAltDataGridViewTextBoxColumn.HeaderText = "DatAlt";
-            this.datAltDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.datAltDataGridViewTextBoxColumn.Name = "datAltDataGridViewTextBoxColumn";
-            this.datAltDataGridViewTextBoxColumn.ReadOnly = true;
-            this.datAltDataGridViewTextBoxColumn.Width = 125;
             // 
             // carrosBindingSource
             // 
@@ -291,6 +194,115 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
+            // DeleteCommand
+            // 
+            this.DeleteCommand.DataPropertyName = "DeleteCollum";
+            this.DeleteCommand.HeaderText = "Deletar";
+            this.DeleteCommand.MinimumWidth = 6;
+            this.DeleteCommand.Name = "DeleteCommand";
+            this.DeleteCommand.ReadOnly = true;
+            this.DeleteCommand.Width = 125;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar";
+            this.editar.MinimumWidth = 6;
+            this.editar.Name = "editar";
+            this.editar.ReadOnly = true;
+            this.editar.Text = "Editar";
+            this.editar.UseColumnTextForButtonValue = true;
+            this.editar.Width = 125;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // marcaDataGridViewTextBoxColumn
+            // 
+            this.marcaDataGridViewTextBoxColumn.DataPropertyName = "Marca";
+            this.marcaDataGridViewTextBoxColumn.HeaderText = "Marca";
+            this.marcaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.marcaDataGridViewTextBoxColumn.Name = "marcaDataGridViewTextBoxColumn";
+            this.marcaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.marcaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // modeloDataGridViewTextBoxColumn
+            // 
+            this.modeloDataGridViewTextBoxColumn.DataPropertyName = "Modelo";
+            this.modeloDataGridViewTextBoxColumn.HeaderText = "Modelo";
+            this.modeloDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.modeloDataGridViewTextBoxColumn.Name = "modeloDataGridViewTextBoxColumn";
+            this.modeloDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modeloDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // anoDataGridViewTextBoxColumn
+            // 
+            this.anoDataGridViewTextBoxColumn.DataPropertyName = "Ano";
+            this.anoDataGridViewTextBoxColumn.HeaderText = "Ano";
+            this.anoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.anoDataGridViewTextBoxColumn.Name = "anoDataGridViewTextBoxColumn";
+            this.anoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.anoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // ativoDataGridViewCheckBoxColumn
+            // 
+            this.ativoDataGridViewCheckBoxColumn.DataPropertyName = "Ativo";
+            this.ativoDataGridViewCheckBoxColumn.HeaderText = "Ativo";
+            this.ativoDataGridViewCheckBoxColumn.MinimumWidth = 6;
+            this.ativoDataGridViewCheckBoxColumn.Name = "ativoDataGridViewCheckBoxColumn";
+            this.ativoDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.ativoDataGridViewCheckBoxColumn.Width = 125;
+            // 
+            // precoDataGridViewTextBoxColumn
+            // 
+            this.precoDataGridViewTextBoxColumn.DataPropertyName = "Preco";
+            this.precoDataGridViewTextBoxColumn.HeaderText = "Preco";
+            this.precoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
+            this.precoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // usuIncDataGridViewTextBoxColumn
+            // 
+            this.usuIncDataGridViewTextBoxColumn.DataPropertyName = "UsuInc";
+            this.usuIncDataGridViewTextBoxColumn.HeaderText = "UsuInc";
+            this.usuIncDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.usuIncDataGridViewTextBoxColumn.Name = "usuIncDataGridViewTextBoxColumn";
+            this.usuIncDataGridViewTextBoxColumn.ReadOnly = true;
+            this.usuIncDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // usuAltDataGridViewTextBoxColumn
+            // 
+            this.usuAltDataGridViewTextBoxColumn.DataPropertyName = "UsuAlt";
+            this.usuAltDataGridViewTextBoxColumn.HeaderText = "UsuAlt";
+            this.usuAltDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.usuAltDataGridViewTextBoxColumn.Name = "usuAltDataGridViewTextBoxColumn";
+            this.usuAltDataGridViewTextBoxColumn.ReadOnly = true;
+            this.usuAltDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // datIncDataGridViewTextBoxColumn
+            // 
+            this.datIncDataGridViewTextBoxColumn.DataPropertyName = "DatInc";
+            this.datIncDataGridViewTextBoxColumn.HeaderText = "DatInc";
+            this.datIncDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.datIncDataGridViewTextBoxColumn.Name = "datIncDataGridViewTextBoxColumn";
+            this.datIncDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datIncDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // datAltDataGridViewTextBoxColumn
+            // 
+            this.datAltDataGridViewTextBoxColumn.DataPropertyName = "DatAlt";
+            this.datAltDataGridViewTextBoxColumn.HeaderText = "DatAlt";
+            this.datAltDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.datAltDataGridViewTextBoxColumn.Name = "datAltDataGridViewTextBoxColumn";
+            this.datAltDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datAltDataGridViewTextBoxColumn.Width = 125;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -325,7 +337,14 @@
         private System.Windows.Forms.BindingSource carrosBindingSource;
         private ParteFinalLocadoraTSQLDataSet1TableAdapters.CarrosTableAdapter carrosTableAdapter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteCommand;
+        private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn marcaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modeloDataGridViewTextBoxColumn;
@@ -336,11 +355,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuAltDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datIncDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datAltDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
     }
 }

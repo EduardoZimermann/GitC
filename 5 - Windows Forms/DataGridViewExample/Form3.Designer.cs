@@ -30,7 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.parteFinalLocadoraTSQLDataSet1 = new DataGridViewExample.ParteFinalLocadoraTSQLDataSet1();
+            this.usuariosTableAdapter = new DataGridViewExample.ParteFinalLocadoraTSQLDataSet1TableAdapters.UsuariosTableAdapter();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.DeleteCommand = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.editCommand = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -38,12 +45,6 @@
             this.usuAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.parteFinalLocadoraTSQLDataSet1 = new DataGridViewExample.ParteFinalLocadoraTSQLDataSet1();
-            this.usuariosTableAdapter = new DataGridViewExample.ParteFinalLocadoraTSQLDataSet1TableAdapters.UsuariosTableAdapter();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parteFinalLocadoraTSQLDataSet1)).BeginInit();
@@ -59,6 +60,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DeleteCommand,
+            this.editCommand,
             this.idDataGridViewTextBoxColumn,
             this.nomeDataGridViewTextBoxColumn,
             this.ativoDataGridViewCheckBoxColumn,
@@ -76,6 +78,59 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
+            // usuariosBindingSource
+            // 
+            this.usuariosBindingSource.DataMember = "Usuarios";
+            this.usuariosBindingSource.DataSource = this.parteFinalLocadoraTSQLDataSet1;
+            // 
+            // parteFinalLocadoraTSQLDataSet1
+            // 
+            this.parteFinalLocadoraTSQLDataSet1.DataSetName = "ParteFinalLocadoraTSQLDataSet1";
+            this.parteFinalLocadoraTSQLDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usuariosTableAdapter
+            // 
+            this.usuariosTableAdapter.ClearBeforeFill = true;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(665, 16);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(112, 73);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Sair";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(32, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 73);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Lixeira";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(150, 16);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 73);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Restaurar";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // DeleteCommand
             // 
             this.DeleteCommand.DataPropertyName = "DeleteCollum";
@@ -86,6 +141,16 @@
             this.DeleteCommand.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.DeleteCommand.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.DeleteCommand.Width = 125;
+            // 
+            // editCommand
+            // 
+            this.editCommand.HeaderText = "Editar";
+            this.editCommand.MinimumWidth = 6;
+            this.editCommand.Name = "editCommand";
+            this.editCommand.ReadOnly = true;
+            this.editCommand.Text = "Editar";
+            this.editCommand.UseColumnTextForButtonValue = true;
+            this.editCommand.Width = 125;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -150,59 +215,6 @@
             this.datAltDataGridViewTextBoxColumn.ReadOnly = true;
             this.datAltDataGridViewTextBoxColumn.Width = 125;
             // 
-            // usuariosBindingSource
-            // 
-            this.usuariosBindingSource.DataMember = "Usuarios";
-            this.usuariosBindingSource.DataSource = this.parteFinalLocadoraTSQLDataSet1;
-            // 
-            // parteFinalLocadoraTSQLDataSet1
-            // 
-            this.parteFinalLocadoraTSQLDataSet1.DataSetName = "ParteFinalLocadoraTSQLDataSet1";
-            this.parteFinalLocadoraTSQLDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usuariosTableAdapter
-            // 
-            this.usuariosTableAdapter.ClearBeforeFill = true;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(665, 16);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(112, 73);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Sair";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(32, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 73);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Lixeira";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(150, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 73);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Restaurar";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -230,7 +242,11 @@
         private ParteFinalLocadoraTSQLDataSet1 parteFinalLocadoraTSQLDataSet1;
         private System.Windows.Forms.BindingSource usuariosBindingSource;
         private ParteFinalLocadoraTSQLDataSet1TableAdapters.UsuariosTableAdapter usuariosTableAdapter;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteCommand;
+        private System.Windows.Forms.DataGridViewButtonColumn editCommand;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ativoDataGridViewCheckBoxColumn;
@@ -238,8 +254,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuAltDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datIncDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datAltDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }

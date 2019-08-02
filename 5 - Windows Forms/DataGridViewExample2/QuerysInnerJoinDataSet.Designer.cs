@@ -3003,8 +3003,7 @@ SELECT Id, Modelo, Ano, Marca, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM Carros
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Modelo, Ano, Marca, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Car" +
-                "ros";
+            this._commandCollection[0].CommandText = "SELECT Id, Modelo, Ano, Marca, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM Carros";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -3024,8 +3023,8 @@ SELECT Id, Modelo, Ano, Marca, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM Carros
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Id, Modelo, Ano, Marca, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Car" +
-                "ros WHERE Ativo = 0";
+            this._commandCollection[4].CommandText = "SELECT Id, Modelo, Ano, Marca, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM Carros " +
+                "WHERE (Ativo = 0)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
         }
         

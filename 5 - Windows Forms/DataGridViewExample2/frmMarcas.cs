@@ -59,5 +59,25 @@ namespace DataGridViewExample2
         {
             this.Close();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAdicionarMarca addMarca = new frmAdicionarMarca();
+            addMarca.ShowDialog();
+
+            if (!string.IsNullOrEmpty(addMarca.marcasRow?.Nome))
+            {
+                this.marcasTableAdapter.Insert(
+                addMarca.marcasRow.Nome,
+                true,
+                1,
+                1,
+                DateTime.Now,
+                DateTime.Now
+                );
+            }
+
+            this.marcasTableAdapter.CustomQuery(this.querysInnerJoinDataSet.Marcas);
+        }
     }
 }

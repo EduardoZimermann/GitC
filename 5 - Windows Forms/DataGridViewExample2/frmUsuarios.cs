@@ -59,5 +59,25 @@ namespace DataGridViewExample2
         {
             this.Close();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAdicionarUsuario addUser = new frmAdicionarUsuario();
+            addUser.ShowDialog();
+
+            if (!string.IsNullOrEmpty(addUser.userRow?.User))
+            {
+                this.usuariosTableAdapter.Insert(
+                addUser.userRow.User,
+                true,
+                1,
+                1,
+                DateTime.Now,
+                DateTime.Now
+                );
+            }
+
+            this.usuariosTableAdapter.CustomQuery(this.querysInnerJoinDataSet.Usuarios);
+        }
     }
 }

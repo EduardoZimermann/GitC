@@ -89,7 +89,9 @@ namespace DataGridViewExample2
             frmAdicionar formAdd = new frmAdicionar();
             formAdd.ShowDialog();
 
-            this.carrosTableAdapter.Insert(
+            if (!string.IsNullOrEmpty(formAdd.carrosRow?.Modelo))
+            {
+                this.carrosTableAdapter.Insert(
                 formAdd.carrosRow.Modelo,
                 formAdd.carrosRow.Ano,
                 formAdd.carrosRow.Marca,
@@ -99,6 +101,7 @@ namespace DataGridViewExample2
                 DateTime.Now,
                 DateTime.Now
                 );
+            }
 
             this.carrosTableAdapter.CustomQuery(this.querysInnerJoinDataSet.Carros);
         }

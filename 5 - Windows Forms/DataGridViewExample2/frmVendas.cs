@@ -23,7 +23,6 @@ namespace DataGridViewExample2
         {
             // TODO: This line of code loads data into the 'querysInnerJoinDataSet.Vendas' table. You can move, or remove it, as needed.
             this.vendasTableAdapter.CustomQuery(this.querysInnerJoinDataSet.Vendas);
-
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -59,6 +58,31 @@ namespace DataGridViewExample2
         private void Button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAdicionarVenda addVenda = new frmAdicionarVenda();
+            addVenda.ShowDialog();
+
+            if (addVenda.vendasRow?.Carro != null &&
+                addVenda.vendasRow.Quantidade != 0 && 
+                addVenda.vendasRow?.Valor != null
+                )
+            {
+                this.vendasTableAdapter.Insert(
+                addVenda.vendasRow.Carro,
+                addVenda.vendasRow.Quantidade,
+                addVenda.vendasRow.Valor,
+                true,
+                2,
+                2,
+                DateTime.Now,
+                DateTime.Now
+                );
+            }
+
+            this.vendasTableAdapter.CustomQuery(this.querysInnerJoinDataSet.Vendas);
         }
     }
 }

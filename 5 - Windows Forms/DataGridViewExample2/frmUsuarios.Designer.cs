@@ -44,6 +44,7 @@
             this.usuariosTableAdapter = new DataGridViewExample2.QuerysInnerJoinDataSetTableAdapters.UsuariosTableAdapter();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.querysInnerJoinDataSet)).BeginInit();
@@ -199,12 +200,26 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 83);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Adicionar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(800, 470);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
@@ -236,5 +251,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datIncDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datAltDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button1;
     }
 }

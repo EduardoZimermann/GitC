@@ -64,6 +64,18 @@
     <Compile Include="Adicao\frmAdicionarGenero.Designer.cs">
       <DependentUpon>frmAdicionarGenero.cs</DependentUpon>
     </Compile>
+    <Compile Include="Adicao\frmAdicionarLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicao\frmAdicionarLivro.Designer.cs">
+      <DependentUpon>frmAdicionarLivro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adicao\frmAdicionarLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicao\frmAdicionarLocacao.Designer.cs">
+      <DependentUpon>frmAdicionarLocacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Adicao\frmAdicionarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,18 @@
     <Compile Include="Edicao\frmEdicaoGenero.Designer.cs">
       <DependentUpon>frmEdicaoGenero.cs</DependentUpon>
     </Compile>
+    <Compile Include="Edicao\frmEdicaoLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edicao\frmEdicaoLivro.Designer.cs">
+      <DependentUpon>frmEdicaoLivro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edicao\frmEdicaoLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edicao\frmEdicaoLocacao.Designer.cs">
+      <DependentUpon>frmEdicaoLocacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edicao\frmEdicaoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +123,18 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lixeira\frmLixeiraLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lixeira\frmLixeiraLivro.Designer.cs">
+      <DependentUpon>frmLixeiraLivro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lixeira\frmLixeiraLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lixeira\frmLixeiraLocacao.Designer.cs">
+      <DependentUpon>frmLixeiraLocacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Lixeira\frmLixeiraUsuario.cs">
       <SubType>Form</SubType>
@@ -113,6 +149,7 @@
     <Compile Include="Model\Livro.cs" />
     <Compile Include="Model\LivroAutor.cs" />
     <Compile Include="Model\Locacao.cs" />
+    <Compile Include="Model\Session.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +157,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaBibliotecaDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaBibliotecaDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaBibliotecaDBDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="View\frmAutores.cs">
       <SubType>Form</SubType>
@@ -139,11 +181,35 @@
     <Compile Include="View\frmGeneros.Designer.cs">
       <DependentUpon>frmGeneros.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmLivroAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLivroAutor.Designer.cs">
+      <DependentUpon>frmLivroAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLivros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLivros.Designer.cs">
+      <DependentUpon>frmLivros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLocacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLocacoes.Designer.cs">
+      <DependentUpon>frmLocacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmPrincipal2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmPrincipal2.Designer.cs">
+      <DependentUpon>frmPrincipal2.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmUsuarios.cs">
       <SubType>Form</SubType>
@@ -160,6 +226,12 @@
     <EmbeddedResource Include="Adicao\frmAdicionarGenero.resx">
       <DependentUpon>frmAdicionarGenero.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Adicao\frmAdicionarLivro.resx">
+      <DependentUpon>frmAdicionarLivro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adicao\frmAdicionarLocacao.resx">
+      <DependentUpon>frmAdicionarLocacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Adicao\frmAdicionarUsuario.resx">
       <DependentUpon>frmAdicionarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,11 +244,26 @@
     <EmbeddedResource Include="Edicao\frmEdicaoGenero.resx">
       <DependentUpon>frmEdicaoGenero.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Edicao\frmEdicaoLivro.resx">
+      <DependentUpon>frmEdicaoLivro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edicao\frmEdicaoLocacao.resx">
+      <DependentUpon>frmEdicaoLocacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Edicao\frmEdicaoUsuario.resx">
       <DependentUpon>frmEdicaoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lixeira\frmLixeiraLivro.resx">
+      <DependentUpon>frmLixeiraLivro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lixeira\frmLixeiraLocacao.resx">
+      <DependentUpon>frmLixeiraLocacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lixeira\frmLixeiraUsuario.resx">
+      <DependentUpon>frmLixeiraUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -196,8 +283,20 @@
     <EmbeddedResource Include="View\frmGeneros.resx">
       <DependentUpon>frmGeneros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLivroAutor.resx">
+      <DependentUpon>frmLivroAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLivros.resx">
+      <DependentUpon>frmLivros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLocacoes.resx">
+      <DependentUpon>frmLocacoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmPrincipal2.resx">
+      <DependentUpon>frmPrincipal2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
@@ -221,6 +320,17 @@
     </None>
     <None Include="SistemaBibliotecaDBDataSet.xss">
       <DependentUpon>SistemaBibliotecaDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaBibliotecaDBDataSet1.xsc">
+      <DependentUpon>SistemaBibliotecaDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaBibliotecaDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaBibliotecaDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaBibliotecaDBDataSet1.xss">
+      <DependentUpon>SistemaBibliotecaDBDataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

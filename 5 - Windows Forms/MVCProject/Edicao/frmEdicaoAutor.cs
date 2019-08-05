@@ -12,9 +12,15 @@ namespace MVCProject.Edicao
 {
     public partial class frmEdicaoAutor : Form
     {
+        int X = 0;
+        int Y = 0;
+
         public frmEdicaoAutor()
         {
             InitializeComponent();
+
+            this.MouseDown += new MouseEventHandler(FrmEdicaoAutor_MouseDown);
+            this.MouseMove += new MouseEventHandler(FrmEdicaoAutor_MouseMove);
         }
 
         public MVCProject.SistemaBibliotecaDBDataSet.AutoresRow AutoresRow;
@@ -29,8 +35,26 @@ namespace MVCProject.Edicao
             AutoresRow.Nome = tbxNome.Text;
             AutoresRow.Descricao = tbxDescricao.Text;
 
-
             this.Close();
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FrmEdicaoAutor_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            X = this.Left - MousePosition.X;
+            Y = this.Top - MousePosition.Y;
+        }
+
+        private void FrmEdicaoAutor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            this.Left = X + MousePosition.X;
+            this.Top = Y + MousePosition.Y;
         }
     }
 }

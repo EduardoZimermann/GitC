@@ -13,9 +13,15 @@ namespace MVCProject.Adicao
 {
     public partial class frmAdicionarEditora : Form
     {
+        int X = 0;
+        int Y = 0;
+
         public frmAdicionarEditora()
         {
             InitializeComponent();
+
+            this.MouseDown += new MouseEventHandler(FrmAdicionarEditora_MouseDown);
+            this.MouseMove += new MouseEventHandler(FrmAdicionarEditora_MouseMove);
         }
 
         public Editora novoEditora;
@@ -29,6 +35,25 @@ namespace MVCProject.Adicao
             };
 
             this.Close();
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FrmAdicionarEditora_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            X = this.Left - MousePosition.X;
+            Y = this.Top - MousePosition.Y;
+        }
+
+        private void FrmAdicionarEditora_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            this.Left = X + MousePosition.X;
+            this.Top = Y + MousePosition.Y;
         }
     }
 }

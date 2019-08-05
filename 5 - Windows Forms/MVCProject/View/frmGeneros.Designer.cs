@@ -30,18 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.sistemaBibliotecaDBDataSet = new MVCProject.SistemaBibliotecaDBDataSet();
             this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaBibliotecaDBDataSet = new MVCProject.SistemaBibliotecaDBDataSet();
+            this.button1 = new System.Windows.Forms.Button();
             this.generosTableAdapter = new MVCProject.SistemaBibliotecaDBDataSetTableAdapters.GenerosTableAdapter();
-            this.deleteCommand = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.editCommand = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaBibliotecaDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaBibliotecaDBDataSet)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -51,13 +54,13 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.deleteCommand,
             this.editCommand,
             this.idDataGridViewTextBoxColumn,
             this.tipoDataGridViewTextBoxColumn,
             this.descricaoDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.generosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 104);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 103);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -66,39 +69,76 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
-            // button1
+            // generosBindingSource
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(776, 86);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Adicionar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.generosBindingSource.DataMember = "Generos";
+            this.generosBindingSource.DataSource = this.sistemaBibliotecaDBDataSet;
             // 
             // sistemaBibliotecaDBDataSet
             // 
             this.sistemaBibliotecaDBDataSet.DataSetName = "SistemaBibliotecaDBDataSet";
             this.sistemaBibliotecaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // generosBindingSource
+            // button1
             // 
-            this.generosBindingSource.DataMember = "Generos";
-            this.generosBindingSource.DataSource = this.sistemaBibliotecaDBDataSet;
+            this.button1.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.Location = new System.Drawing.Point(569, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(171, 47);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Adicionar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // generosTableAdapter
             // 
             this.generosTableAdapter.ClearBeforeFill = true;
             // 
-            // deleteCommand
+            // panel1
             // 
-            this.deleteCommand.HeaderText = "Deletar";
-            this.deleteCommand.MinimumWidth = 6;
-            this.deleteCommand.Name = "deleteCommand";
-            this.deleteCommand.ReadOnly = true;
-            this.deleteCommand.Text = "Deletar";
-            this.deleteCommand.UseColumnTextForButtonValue = true;
-            this.deleteCommand.Width = 125;
+            this.panel1.BackColor = System.Drawing.Color.DarkKhaki;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(805, 80);
+            this.panel1.TabIndex = 7;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseMove);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(49, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 29);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Gêneros";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(763, 11);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 25);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "X";
+            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // editCommand
             // 
@@ -141,15 +181,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(805, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmGeneros";
             this.Text = "frmGeneros";
             this.Load += new System.EventHandler(this.FrmGeneros_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmGeneros_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmGeneros_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaBibliotecaDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaBibliotecaDBDataSet)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -161,7 +208,9 @@
         private SistemaBibliotecaDBDataSet sistemaBibliotecaDBDataSet;
         private System.Windows.Forms.BindingSource generosBindingSource;
         private SistemaBibliotecaDBDataSetTableAdapters.GenerosTableAdapter generosTableAdapter;
-        private System.Windows.Forms.DataGridViewButtonColumn deleteCommand;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewButtonColumn editCommand;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;

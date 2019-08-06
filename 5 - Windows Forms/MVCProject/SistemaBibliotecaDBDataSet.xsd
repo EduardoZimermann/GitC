@@ -345,18 +345,32 @@ SELECT Id, Registro, Titulo, Isbn, Genero, Editora, Sinopse, Observacoes, Ativo,
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.Livros" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SelectAtivos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy11" GeneratorSourceName="SelectAtivos" GetMethodModifier="Public" GetMethodName="GetDataBy11" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="SelectAtivos">
+              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="SelectAtivos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy11" GeneratorSourceName="SelectAtivos" GetMethodModifier="Public" GetMethodName="GetDataBy11" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="SelectAtivos">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Ativo, DatAlt, DatInc, Editora, Genero, Id, Isbn, Observacoes, Registro, Sinopse, Titulo, UsuAlt, UsuInc FROM Livros WHERE (Ativo = 1)</CommandText>
+                    <CommandText>SELECT Livros.Ativo, Livros.DatAlt, Livros.DatInc, Livros.Editora, Livros.Genero, Livros.Id, Livros.Isbn, Livros.Observacoes, Livros.Registro, Livros.Sinopse, Livros.Titulo, Livros.UsuAlt, Livros.UsuInc, Editoras.Nome AS 'Editoras.Nome', 
+                  Generos.Tipo AS 'Generos.Tipo', Usuarios.Nome AS 'User Inc', Us.Nome AS 'User Alt'
+FROM     Livros INNER JOIN
+                  Editoras ON Livros.Editora = Editoras.Id INNER JOIN
+                  Generos ON Livros.Genero = Generos.Id INNER JOIN
+                  Usuarios ON Livros.UsuInc = Usuarios.Id INNER JOIN
+                  Usuarios AS Us ON Livros.UsuAlt = Us.Id
+WHERE  (Livros.Ativo = 1)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.Livros" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SelectInativos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy3" GeneratorSourceName="SelectInativos" GetMethodModifier="Public" GetMethodName="GetDataBy3" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="SelectInativos">
+              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="SelectInativos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy3" GeneratorSourceName="SelectInativos" GetMethodModifier="Public" GetMethodName="GetDataBy3" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="SelectInativos">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, Registro, Titulo, Isbn, Genero, Editora, Sinopse, Observacoes, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Livros WHERE Ativo = 0</CommandText>
+                    <CommandText>SELECT Livros.Id, Livros.Registro, Livros.Titulo, Livros.Isbn, Livros.Genero, Livros.Editora, Livros.Sinopse, Livros.Observacoes, Livros.Ativo, Livros.UsuInc, Livros.UsuAlt, Livros.DatInc, Livros.DatAlt, Editoras.Nome AS 'Editoras.Nome', 
+                  Generos.Tipo AS 'Generos.Tipo', Usuarios.Nome AS 'User Inc', Us.Nome AS 'User Alt'
+FROM     Livros INNER JOIN
+                  Editoras ON Livros.Editora = Editoras.Id INNER JOIN
+                  Generos ON Livros.Genero = Generos.Id INNER JOIN
+                  Usuarios ON Livros.UsuInc = Usuarios.Id INNER JOIN
+                  Usuarios AS Us ON Livros.UsuAlt = Us.Id
+WHERE  (Livros.Ativo = 0)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -388,10 +402,13 @@ SELECT Id, Registro, Titulo, Isbn, Genero, Editora, Sinopse, Observacoes, Ativo,
               <Mapping SourceColumn="Autor" DataSetColumn="Autor" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.LivroAutor" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SelectLivroAutor" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SelectLivroAutor" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SelectLivroAutor">
+              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="SelectLivroAutor" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SelectLivroAutor" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SelectLivroAutor">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Livro, Autor FROM dbo.LivroAutor WHERE Livro = @livroId</CommandText>
+                    <CommandText>SELECT LivroAutor.Livro, LivroAutor.Autor, Autores.Nome AS 'Autores.Nome'
+FROM     LivroAutor INNER JOIN
+                  Autores ON LivroAutor.Autor = Autores.Id
+WHERE  (LivroAutor.Livro = @livroId)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="livroId" ColumnName="Livro" DataSourceName="SistemaBibliotecaDB.dbo.LivroAutor" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@livroId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Livro" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -517,18 +534,30 @@ SELECT Id, Livro, Usuario, Tipo, Devolucao, Ativo, UsuInc, UsuAlt, DatInc, DatAl
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.Locacao" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SelectAtivos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy11" GeneratorSourceName="SelectAtivos" GetMethodModifier="Public" GetMethodName="GetDataBy11" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="SelectAtivos">
+              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="SelectAtivos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy11" GeneratorSourceName="SelectAtivos" GetMethodModifier="Public" GetMethodName="GetDataBy11" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="SelectAtivos">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, Livro, Usuario, Tipo, Devolucao, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Locacao WHERE Ativo = 1</CommandText>
+                    <CommandText>SELECT Locacao.Id, Locacao.Livro, Locacao.Usuario, Locacao.Tipo, Locacao.Devolucao, Locacao.Ativo, Locacao.UsuInc, Locacao.UsuAlt, Locacao.DatInc, Locacao.DatAlt, Usuarios.Nome AS 'User Loc', Us_1.Nome AS 'User Inc', 
+                  Us_2.Nome AS 'User Alt'
+FROM     Locacao INNER JOIN
+                  Usuarios ON Locacao.Usuario = Usuarios.Id INNER JOIN
+                  Usuarios AS Us_1 ON Locacao.UsuInc = Us_1.Id INNER JOIN
+                  Usuarios AS Us_2 ON Locacao.UsuAlt = Us_2.Id
+WHERE  (Locacao.Ativo = 1)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.Locacao" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SelectInativos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="SelectInativos" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SelectInativos">
+              <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="SelectInativos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="SelectInativos" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SelectInativos">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, Livro, Usuario, Tipo, Devolucao, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Locacao WHERE Ativo = 0</CommandText>
+                    <CommandText>SELECT Locacao.Id, Locacao.Livro, Locacao.Usuario, Locacao.Tipo, Locacao.Devolucao, Locacao.Ativo, Locacao.UsuInc, Locacao.UsuAlt, Locacao.DatInc, Locacao.DatAlt, Usuarios.Nome AS 'User Loc', Us_1.Nome AS 'User Inc', 
+                  Us_2.Nome AS 'User Alt'
+FROM     Locacao INNER JOIN
+                  Usuarios ON Locacao.Usuario = Usuarios.Id INNER JOIN
+                  Usuarios AS Us_1 ON Locacao.UsuInc = Us_1.Id INNER JOIN
+                  Usuarios AS Us_2 ON Locacao.UsuAlt = Us_2.Id
+WHERE  (Locacao.Ativo = 0)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -574,7 +603,7 @@ SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Usuarios</CommandText>
+                    <CommandText>SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM Usuarios</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -634,7 +663,7 @@ SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM
               <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.Usuarios" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="LoginQuery" Modifier="Public" Name="LoginQuery" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="LoginQuery">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id FROM Usuarios WHERE Login = @login and Senha = @senha</CommandText>
+                    <CommandText>SELECT Id FROM Usuarios WHERE (Login = @login) AND (Senha = @senha)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="login" ColumnName="Login" DataSourceName="SistemaBibliotecaDB.dbo.Usuarios" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@login" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Login" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="senha" ColumnName="Senha" DataSourceName="SistemaBibliotecaDB.dbo.Usuarios" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@senha" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Senha" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -655,7 +684,7 @@ SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM
               <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.Usuarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SelectAtivos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy11" GeneratorSourceName="SelectAtivos" GetMethodModifier="Public" GetMethodName="GetDataBy11" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="SelectAtivos">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Usuarios WHERE Ativo = 1</CommandText>
+                    <CommandText>SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM Usuarios WHERE (Ativo = 1)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -663,7 +692,7 @@ SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM
               <DbSource ConnectionRef="SistemaBibliotecaDBConnectionString (Settings)" DbObjectName="SistemaBibliotecaDB.dbo.Usuarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SelectInativos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy21" GeneratorSourceName="SelectInativos" GetMethodModifier="Public" GetMethodName="GetDataBy21" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy21" UserSourceName="SelectInativos">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM dbo.Usuarios WHERE Ativo = 0</CommandText>
+                    <CommandText>SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM Usuarios WHERE (Ativo = 0)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -781,6 +810,10 @@ SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM
               <xs:element name="UsuAlt" msprop:Generator_ColumnVarNameInTable="columnUsuAlt" msprop:Generator_ColumnPropNameInRow="UsuAlt" msprop:Generator_ColumnPropNameInTable="UsuAltColumn" msprop:Generator_UserColumnName="UsuAlt" type="xs:int" />
               <xs:element name="DatInc" msprop:Generator_ColumnVarNameInTable="columnDatInc" msprop:Generator_ColumnPropNameInRow="DatInc" msprop:Generator_ColumnPropNameInTable="DatIncColumn" msprop:Generator_UserColumnName="DatInc" type="xs:dateTime" />
               <xs:element name="DatAlt" msprop:Generator_ColumnVarNameInTable="columnDatAlt" msprop:Generator_ColumnPropNameInRow="DatAlt" msprop:Generator_ColumnPropNameInTable="DatAltColumn" msprop:Generator_UserColumnName="DatAlt" type="xs:dateTime" />
+              <xs:element name="Editoras.Nome" msprop:Generator_ColumnVarNameInTable="_columnEditoras_Nome" msprop:Generator_ColumnPropNameInRow="_Editoras_Nome" msprop:Generator_ColumnPropNameInTable="_Editoras_NomeColumn" msprop:Generator_UserColumnName="Editoras.Nome" type="xs:string" default="Editoras.Nome" minOccurs="0" />
+              <xs:element name="Generos.Tipo" msprop:Generator_ColumnVarNameInTable="_columnGeneros_Tipo" msprop:Generator_ColumnPropNameInRow="_Generos_Tipo" msprop:Generator_ColumnPropNameInTable="_Generos_TipoColumn" msprop:Generator_UserColumnName="Generos.Tipo" type="xs:string" default="Generos.Tipo" minOccurs="0" />
+              <xs:element name="User_x0020_Inc" msprop:Generator_ColumnVarNameInTable="columnUser_Inc" msprop:Generator_ColumnPropNameInRow="User_Inc" msprop:Generator_ColumnPropNameInTable="User_IncColumn" msprop:Generator_UserColumnName="User Inc" type="xs:string" default="Usuário.Nome" minOccurs="0" />
+              <xs:element name="User_x0020_Alt" msprop:Generator_ColumnVarNameInTable="columnUser_Alt" msprop:Generator_ColumnPropNameInRow="User_Alt" msprop:Generator_ColumnPropNameInTable="User_AltColumn" msprop:Generator_UserColumnName="User Alt" type="xs:string" default="Usuario.Nome" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -789,6 +822,7 @@ SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM
             <xs:sequence>
               <xs:element name="Livro" msprop:Generator_ColumnVarNameInTable="columnLivro" msprop:Generator_ColumnPropNameInRow="Livro" msprop:Generator_ColumnPropNameInTable="LivroColumn" msprop:Generator_UserColumnName="Livro" type="xs:int" />
               <xs:element name="Autor" msprop:Generator_ColumnVarNameInTable="columnAutor" msprop:Generator_ColumnPropNameInRow="Autor" msprop:Generator_ColumnPropNameInTable="AutorColumn" msprop:Generator_UserColumnName="Autor" type="xs:int" />
+              <xs:element name="Autores.Nome" msprop:Generator_ColumnVarNameInTable="_columnAutores_Nome" msprop:Generator_ColumnPropNameInRow="_Autores_Nome" msprop:Generator_ColumnPropNameInTable="_Autores_NomeColumn" msprop:Generator_UserColumnName="Autores.Nome" type="xs:string" default="Autores.Nome" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -805,6 +839,9 @@ SELECT Id, Nome, Login, Senha, Email, Ativo, UsuInc, UsuAlt, DatInc, DatAlt FROM
               <xs:element name="UsuAlt" msprop:Generator_ColumnVarNameInTable="columnUsuAlt" msprop:Generator_ColumnPropNameInRow="UsuAlt" msprop:Generator_ColumnPropNameInTable="UsuAltColumn" msprop:Generator_UserColumnName="UsuAlt" type="xs:int" />
               <xs:element name="DatInc" msprop:Generator_ColumnVarNameInTable="columnDatInc" msprop:Generator_ColumnPropNameInRow="DatInc" msprop:Generator_ColumnPropNameInTable="DatIncColumn" msprop:Generator_UserColumnName="DatInc" type="xs:dateTime" />
               <xs:element name="DatAlt" msprop:Generator_ColumnVarNameInTable="columnDatAlt" msprop:Generator_ColumnPropNameInRow="DatAlt" msprop:Generator_ColumnPropNameInTable="DatAltColumn" msprop:Generator_UserColumnName="DatAlt" type="xs:dateTime" />
+              <xs:element name="User_x0020_Inc" msprop:Generator_ColumnVarNameInTable="columnUser_Inc" msprop:Generator_ColumnPropNameInRow="User_Inc" msprop:Generator_ColumnPropNameInTable="User_IncColumn" msprop:Generator_UserColumnName="User Inc" type="xs:string" minOccurs="0" />
+              <xs:element name="User_x0020_Alt" msprop:Generator_ColumnVarNameInTable="columnUser_Alt" msprop:Generator_ColumnPropNameInRow="User_Alt" msprop:Generator_ColumnPropNameInTable="User_AltColumn" msprop:Generator_UserColumnName="User Alt" type="xs:string" minOccurs="0" />
+              <xs:element name="User_x0020_Loc" msprop:Generator_ColumnVarNameInTable="columnUser_Loc" msprop:Generator_ColumnPropNameInRow="User_Loc" msprop:Generator_ColumnPropNameInTable="User_LocColumn" msprop:Generator_UserColumnName="User Loc" type="xs:string" default="User Loc" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

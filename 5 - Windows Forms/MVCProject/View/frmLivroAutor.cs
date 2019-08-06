@@ -28,6 +28,8 @@ namespace MVCProject.View
 
         private void FrmLivroAutor_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'sistemaBibliotecaDBDataSet.Editoras' table. You can move, or remove it, as needed.
+            this.editorasTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Editoras);
             // TODO: This line of code loads data into the 'sistemaBibliotecaDBDataSet.LivroAutor' table. You can move, or remove it, as needed.
             this.livroAutorTableAdapter.SelectLivroAutor(this.sistemaBibliotecaDBDataSet.LivroAutor, livroRow.Id);
             // TODO: This line of code loads data into the 'sistemaBibliotecaDBDataSet.Autores' table. You can move, or remove it, as needed.

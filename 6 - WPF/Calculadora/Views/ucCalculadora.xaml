@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Calculadora.Views.ucCalculadora"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calculadora.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="750">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="122*"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="405*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="115*"/>
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="154*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="tbxSete" Content="7" Margin="59,54,2.6,1.2" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Click="TbxSete_Click"/>
+        <Button x:Name="tbxOito" Content="8" Margin="2.4,54,1.6,1.2" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Column="1" Click="TbxOito_Click"/>
+        <Button x:Name="tbxNove" Content="9" Margin="3.4,54,1.4,1.2" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Column="2" Click="TbxNove_Click"/>
+        <Button x:Name="tbxQuatro" Content="4" Margin="59,3.8,2.6,2.6" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="1" Click="TbxQuatro_Click"/>
+        <Button x:Name="tbxCinco" Content="5" Margin="2.4,3.8,1.6,2.6" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="1" Grid.Column="1" Click="TbxCinco_Click"/>
+        <Button x:Name="tbxSeis" Content="6" Margin="3.4,3.8,1.4,2.6" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="1" Grid.Column="2" Click="TbxSeis_Click"/>
+        <Button x:Name="tbxUm" Content="1" Margin="59,2.4,2.6,2.4" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="2" Click="TbxUm_Click"/>
+        <Button x:Name="tbxDois" Content="2" Margin="2.4,2.4,1.6,2.4" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="2" Grid.Column="1" Click="TbxDois_Click"/>
+        <Button x:Name="tbxTres" Content="3" Margin="3.4,2.4,1.4,2.4" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="2" Grid.Column="2" Click="TbxTres_Click"/>
+        <Button x:Name="tbxZero" Content="0" Margin="59,2.6,2.6,91" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="3" Click="TbxZero_Click"/>
+        <Button x:Name="tbxMais" Content="+" Margin="3.6,54,31.6,1.2" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Column="3" Click="TbxMais_Click"/>
+        <Button x:Name="tbxMenos" Content="-" Margin="3.6,3.8,31.6,2.6" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="1" Grid.Column="3" Click="TbxMenos_Click"/>
+        <Button x:Name="tbxVezes" Content="*" Margin="3.6,2.4,31.6,2.4" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="2" Grid.Column="3" Click="TbxVezes_Click"/>
+        <Button x:Name="tbxDividir" Content="/" Margin="3.6,2.6,31.6,91" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="3" Grid.Column="3" Click="TbxDividir_Click"/>
+        <Button x:Name="tbxPotencia" Content="p" Margin="3.4,2.6,1.4,91" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="3" Grid.Column="2" Click="TbxPotencia_Click"/>
+        <TextBox x:Name="txtConta" Margin="30.4,54,109.4,13.2" TextWrapping="Wrap" Grid.Column="4"/>
+        <Button x:Name="tbxBack" Content="Back" Margin="2.4,2.6,1.6,91" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="3" Grid.Column="1" Click="TbxBack_Click"/>
+        <TextBox x:Name="txtResultado" Margin="30.4,10.6,109.4,95" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3"/>
+        <Button x:Name="tbxGo" Content="Vai" Margin="30.4,2.4,109.4,2.4" BorderThickness="0" Background="#FF1019CD" Foreground="White" FontSize="16" Grid.Row="2" Grid.Column="4" Click="TbxGo_Click"/>
+
+    </Grid>
+</UserControl>

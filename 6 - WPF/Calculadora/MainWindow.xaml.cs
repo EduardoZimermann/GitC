@@ -29,6 +29,22 @@ namespace Calculadora
         {
             MessageBox.Show("Desfrute desta calculadora!!");
             ucCalculadoraForm.Visibility = Visibility.Visible;
+            //canvaLado.Visibility = Visibility.Hidden;
+        }
+
+        private void UcLoginForm_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void LblSair_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void LblMinimizar_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

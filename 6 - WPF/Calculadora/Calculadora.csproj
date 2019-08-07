@@ -58,6 +58,9 @@
     <Compile Include="Views\ucCalculadora.xaml.cs">
       <DependentUpon>ucCalculadora.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ucLayout.xaml.cs">
+      <DependentUpon>ucLayout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucLogin.xaml.cs">
       <DependentUpon>ucLogin.xaml</DependentUpon>
     </Compile>
@@ -74,6 +77,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ucCalculadora.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ucLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

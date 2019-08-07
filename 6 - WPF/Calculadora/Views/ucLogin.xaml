@@ -5,21 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Calculadora.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="750">
+             d:DesignHeight="400" d:DesignWidth="400">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="202*"/>
-            <ColumnDefinition Width="354*"/>
-            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="118*"/>
-            <RowDefinition Height="169*"/>
-            <RowDefinition Height="113*"/>
+            <RowDefinition Height="141*"/>
+            <RowDefinition Height="126*"/>
+            <RowDefinition Height="133*"/>
         </Grid.RowDefinitions>
-        <TextBox Name="tbxNome" Grid.Column="1" Margin="45.4,39,47.2,26.4" TextWrapping="Wrap" Text=""/>
-        <TextBox Name="tbxSenha" Grid.Column="1" Margin="45.4,60.6,47.2,55.2" TextWrapping="Wrap" Text="" Grid.Row="1"/>
-        <Button Name="btnEntrar" Content="Entrar" Grid.Column="1" Margin="45.4,32.8,47.2,35" Grid.Row="2" Click="BtnEntrar_Click"/>
+        <Canvas HorizontalAlignment="Left" Height="100" Margin="-91,51,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="tbxNome" Margin="65,70,63,30.8" TextWrapping="Wrap" FontSize="18" FontFamily="Verdana" BorderThickness="0,0,0,1" Background="Transparent" BorderBrush="White" Foreground="White" Width="272" Height="40"/>
+        <TextBox x:Name="tbxSenha" Margin="63,39.2,65,47.2" TextWrapping="Wrap" Text="" Grid.Row="1" FontFamily="Verdana" FontSize="18" Background="Transparent" BorderBrush="White" Foreground="White" BorderThickness="0,0,0,1" Width="272" Height="40"/>
+        <Button x:Name="btnEntrar" Content="Entrar" Margin="63,23.8,63,33" Grid.Row="2" Click="BtnEntrar_Click" BorderBrush="White" Background="White" FontFamily="Verdana" FontSize="20"/>
 
     </Grid>
 </UserControl>

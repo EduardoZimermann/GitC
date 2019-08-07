@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Calculadora.Views.ucLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calculadora.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" Width="366">
+    <Grid HorizontalAlignment="Left" Width="366" Height="400" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/Calculadora;component/imagens/logo.png" OpacityMask="#3F000000" Margin="61,74,59.4,82"/>
+
+    </Grid>
+</UserControl>

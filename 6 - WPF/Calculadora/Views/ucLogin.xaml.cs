@@ -42,5 +42,10 @@ namespace Calculadora.Views
             else
                 MessageBox.Show("Login errado!!!");
         }
+
+        private void TbxSenha_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

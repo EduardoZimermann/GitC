@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:Calculadora"
         xmlns:y="clr-namespace:Calculadora.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <y:ucLogin x:Name="ucLoginForm" correctLogin="UcLoginForm_correctLogin"></y:ucLogin>
-        <y:ucCalculadora x:Name="ucCalculadoraForm" Visibility="Hidden"></y:ucCalculadora>
+        Title="MainWindow" Height="450" Width="400" MinHeight="450" MinWidth="370">
+    <Grid Margin="0,0,-10.4,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <y:ucLogin x:Name="ucLoginForm" correctLogin="UcLoginForm_correctLogin" Background="#004f45" Grid.Column="0" MouseLeftButtonDown="UcLoginForm_MouseLeftButtonDown" Margin="0,0,10,0"/>
+        <y:ucCalculadora x:Name="ucCalculadoraForm" Visibility="Hidden" Background="#004f45" Grid.Column="0" Width="Auto" Margin="0,0,10,0"/>
     </Grid>
 </Window>

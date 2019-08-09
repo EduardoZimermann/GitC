@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WpfAppEntity.Views.ucLogin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfAppEntity.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="750">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/WpfAppEntity;component/imagens/bg2.jpg"/>
+    </UserControl.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="320*"/>
+            <ColumnDefinition Width="215*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <!--Border BorderBrush="#99FFFFFF" Background="#22FFFFFF" CornerRadius="6" Margin="115,20,115,20" Grid.RowSpan="5" Grid.ColumnSpan="4" BorderThickness="1,1,1,1"></-->
+
+        <!--Label Content="Entrar" FontSize="26" Foreground="#E6E6E6" HorizontalAlignment="Center" Margin="50,25,50,80" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"></Label-->
+        
+        <Label Content="Nome:" FontSize="18" Foreground="#e6e6e6" Margin="0,45,0,15" Grid.Row="1" Grid.Column="1"></Label>
+        <TextBox Name="tbxLogin" FontSize="16" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#e6e6e6" Background="#00FFFFFF" Foreground="#e6e6e6" Margin="10,30,10,30" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="2"/>
+
+        <Label Content="Senha:" FontSize="18" Foreground="#e6e6e6" Margin="0,45,0,15" Grid.Row="2" Grid.Column="1"></Label>
+        <PasswordBox Name="tbxSenha" FontSize="16" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#e6e6e6" Background="#00FFFFFF" Foreground="#e6e6e6" Margin="10,30,10,30" Grid.Row="2" Grid.Column="2"/>
+
+        <Button Content="Login" FontSize="22" BorderThickness="0" Background="#e6e6e6" Foreground="#4e0b66" Margin="10,20,10,20" Grid.Row="3" Grid.Column="2" Click="Button_Click"/>
+    </Grid>
+</UserControl>

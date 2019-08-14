@@ -1,0 +1,174 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('background2.jpg');
+            background-size: 100%;
+        }
+
+        .tbx {
+            width: 300px;
+            height: 50px;
+            font-size: 14px;
+            color: #e8e8e8;
+            background-color: rgba(0, 0, 0, 0.00);
+            border-bottom: 1px solid #e8e8e8;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            vertical-align: text-bottom;
+            font-family: Trebuchet MS;
+        }
+
+        ::placeholder {
+            color: rgba(255, 253, 237, 0.50);
+        }
+
+        .botao {
+            border: none;
+            background: #e8e8e8;
+            color: #949280;
+            width: 300px;
+            height: 65px;
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-family: Trebuchet MS;
+            border-radius: 3px;
+        }
+
+            .botao:hover {
+                border: 2px solid #e8e8e8;
+                color: #e8e8e8;
+                background-color: rgba(0, 0, 0, 0.00);
+            }
+
+        .botao2 {
+            border: 2px solid #e8e8e8;
+            background-color: rgba(0, 0, 0, 0.00);
+            color: #e8e8e8;
+            width: 145px;
+            height: 40px;
+            font-size: 16px;
+            font-family: Trebuchet MS;
+            border-radius: 3px;
+        }
+
+            .botao2:hover {
+                background: #e8e8e8;
+                color: #949280;
+            }
+
+        h1 {
+            color: #e8e8e8;
+            font-family: Trebuchet MS;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        #logo {
+            width: 75px;
+            height: 75px;
+        }
+
+        #titulo {
+            margin-top: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 32px;
+            color: #9e9e9e;
+        }
+
+        .box {
+            margin-bottom: 25px;
+        }
+
+        #topo {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        #centralizar {
+            text-align: center;
+            background-color: rgba(61, 60, 47, 0.60);
+            width: 300px;
+            height: 380px;
+            margin: 0px auto;
+            padding: 20px 50px;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div id="topo">
+        <img id="logo" src="logo-vanilla-dome.png" />
+        <h1 id="titulo">VANILLA DOME</h1>
+    </div>
+    <div id="centralizar">
+        <form>
+            <h1>Login</h1>
+            <div class="box">
+                <input type="email" style="background-color: rgba(0, 0, 0, 0.00) !important;" id="inputEmail" class="tbx" placeholder="E-mail" required>
+            </div>
+            <div class="box">
+                <input type="password" id="inputPassword" class="tbx" placeholder="Senha" required>
+            </div>
+            <div style="margin-top:40px">
+                <button class="botao" type="button" onclick="Pesquisar()">Entrar</button>
+            </div>
+            <div style="width:300px; margin: 0px auto">
+                <button style="float:left" class="botao2" onclick="Aumentar()">Aumentar</button>
+                <button style="float:right" class="botao2" onclick="Diminuir()">Diminuir</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var cadastros = [
+            {
+                "Id": "1",
+                "Email": "zimermannedu@gmail.com",
+                "Senha": "123"
+            },
+            {
+                "Id": "2",
+                "Email": "allejo@gmail.com",
+                "Senha": "abc"
+            }];
+
+        function Pesquisar() {
+            $.each(cadastros,
+                function (index, object) {
+                    var emailContent = $("#inputEmail").val();
+                    var senhaContent = $("#inputPassword").val();
+
+                    if (object.Email == emailContent && object.Senha == senhaContent) {
+                        alert("Encontrado!!!");
+                    }
+                });
+        }
+
+        var fontSize = 14;
+
+        function Aumentar() {
+            var tbxEmail = document.getElementById("inputEmail");
+            var tbxSenha = document.getElementById("inputPassword");
+            fontSize++;
+
+            tbxEmail.style.fontSize = (fontSize) + "px";
+            tbxSenha.style.fontSize = (fontSize) + "px";
+        }
+
+        function Diminuir() {
+            var tbxEmail = document.getElementById("inputEmail");
+            var tbxSenha = document.getElementById("inputPassword");
+            fontSize--;
+
+            tbxEmail.style.fontSize = (fontSize) + "px";
+            tbxSenha.style.fontSize = (fontSize) + "px";
+        }
+    </script>
+</body>
+</html>

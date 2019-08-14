@@ -1,0 +1,111 @@
+<html>
+<head>
+    <style>
+        /* Classe específica */
+        .ButtonClass {
+            width: 100px;
+            height: 100px;
+        }
+
+        .eduardo {
+            width: 100px;
+            height: 100px;
+            background-image:url("sonic.gif");
+            background-size: cover;
+            position: absolute;
+        }
+        /* Para todas as tags input */
+        input {
+            width: 500px;
+            height: 500px;
+            border-radius: 100%;
+        }
+
+        .screen {
+            width: 1000px;
+            height: 650px;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen">
+        <div id="Edu" incrementleft="true" incrementtop="true" postop="0" posleft="0" velleft="2" veltop="2" class="eduardo"></div>
+    </div>
+    <div>
+        <label id="lblEduardoBallsCount">Contador de esferas de Eduardo: 0</label>
+    </div>
+    <div>
+        <input id="btnClickMe" class="ButtonClass" type="button" value="Adiciona esferas" onclick="CriarEduardo()" />
+    </div>
+    <script>
+        setInterval(Movimento, 1);
+
+        function Movimento() {
+            var esferas = document.getElementsByClassName('eduardo');
+
+            for (var i = 0; i < esferas.length; i++) {
+                MovimentX(esferas[i]);
+            }
+        }
+
+        function MovimentX(object) {
+            var posLeft = parseInt(object.getAttribute("posleft"));
+            var posTop = parseInt(object.getAttribute("postop"));
+            var incrementLeft = object.getAttribute("incrementleft");
+            var incrementTop = object.getAttribute("incrementtop");
+            var idElement = object.getAttribute("id");
+            var velLeft = parseInt(object.getAttribute("velleft"));
+            var velTop = parseInt(object.getAttribute("veltop"));
+            
+            if (posLeft < 950 && incrementLeft == "true") {
+                for (var i = 0; i < velLeft; i++) {
+                    posLeft++;
+                }
+                object.style.left = (posLeft).toString() + "px";
+            } else {
+                for (var i = 0; i < velLeft; i++) {
+                    posLeft--;
+                }
+                object.style.left = (posLeft).toString() + "px";
+                incrementLeft = false;
+
+                if (posLeft <= 0)
+                    incrementLeft = true;
+            }
+
+            if (posTop < 600 && incrementTop == "true") {
+                for (var i = 0; i < velTop; i++) {
+                    posTop++;
+                }
+                object.style.top = (posTop).toString() + "px";
+            } else {
+                for (var i = 0; i < velTop; i++) {
+                    posTop--;
+                }
+                object.style.top = (posTop).toString() + "px";
+                incrementTop = false;
+
+                if (posTop <= 0)
+                    incrementTop = true;
+            }
+
+            document.getElementById(idElement).setAttribute("incrementleft", incrementLeft);
+            document.getElementById(idElement).setAttribute("incrementtop", incrementTop);
+            document.getElementById(idElement).setAttribute("posleft", posLeft);
+            document.getElementById(idElement).setAttribute("postop", posTop);
+        }
+
+        function CriarEduardo() {
+            var elementDoc = document.getElementsByClassName('screen')[0];
+            var elementLbl = document.getElementById('lblEduardoBallsCount');
+            var esferas = document.getElementsByClassName('eduardo').length;
+
+            var random1 = Math.floor(Math.random() * 5) + 1;
+            var random2 = Math.floor(Math.random() * 5) + 1;
+
+            elementDoc.innerHTML += "<div id=" + esferas + " incrementleft=\"true\" incrementtop=\"true\" postop=\"0\" posleft=\"0\" velleft=" + random1 + " veltop=" + random2 + " class=\"eduardo\"></div>"
+            elementLbl.innerHTML = "Contador de esferas de Eduardo: " + esferas;
+        }
+    </script>
+</body>
+</html>

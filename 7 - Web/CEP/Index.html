@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-grid.css" rel="stylesheet" />
+    <style>
+        * {
+            color: #e5e5e5;
+            font-size: 18px;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .principal {
+            background-color: rgba(0, 133, 255, 0.70);
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 7px;
+        }
+
+        .botao {
+            border: none;
+            background: #e5e5e5;
+            color: rgb(0, 133, 255);
+            padding: 10px;
+        }
+
+        .texto {
+            border: none;
+            border-bottom: 1px solid #e5e5e5;
+            color: #e5e5e5;
+            background-color: rgba(0, 0, 0, 0.00);
+        }
+
+        .right {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid col-5 principal">
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-6 right">
+                <input id="txtPesquisar" class="texto" type="text" />
+            </div>
+            <div class="col-6 left">
+                <input id="btnPesquisar" class="botao col-8" type="button" value="Pesquisar" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtCep">CEP:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtCep" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtLogradouro">Logradouro:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtLogradouro" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtComplemento">Complemento:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtComplemento" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtBairro">Bairro:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtBairro" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtLocalidade">Localidade:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtLocalidade" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtUf">Uf:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtUf" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtUnidade">Unidade:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtUnidade" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtIbge">Ibge:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtIbge" class="col-10 texto" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 right">
+                <label for="txtGia">Gia:</label>
+            </div>
+            <div class="col-9 left">
+                <input id="txtGia" class="col-10 texto" type="text" />
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/bootstrap.bundle.js"></script>
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnPesquisar").click(function () {
+                var cepInformado = $("#txtPesquisar").val();
+
+                var linkCep = "https://viacep.com.br/ws/" + cepInformado + "/json/";
+
+                $.get(linkCep, function (data, status) {
+                    $("#txtCep").val(data.cep);
+                    $("#txtLogradouro").val(data.logradouro);
+                    $("#txtComplemento").val(data.complemento);
+                    $("#txtBairro").val(data.bairro);
+                    $("#txtLocalidade").val(data.localidade);
+                    $("#txtUf").val(data.uf);
+                    $("#txtUnidade").val(data.unidade);
+                    $("#txtIbge").val(data.ibge);
+                    $("#txtGia").val(data.gia);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

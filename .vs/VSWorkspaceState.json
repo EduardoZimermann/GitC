@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\7 - Web\\WebApi",
+    "\\7 - Web\\WebApi\\Controllers"
   ],
-  "SelectedNode": "\\.gitattributes",
+  "SelectedNode": "\\7 - Web",
   "PreviewInSolutionExplorer": false
 }

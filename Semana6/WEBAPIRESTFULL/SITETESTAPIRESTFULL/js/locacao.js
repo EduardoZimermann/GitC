@@ -1,19 +1,7 @@
 
     /* Ao carregar o documento o mesmo inicia o conteudo desde script*/
     jQuery(document).ready(function(){
-		
 		CarregaInformacoes();
-
-		jQuery('#bntCancelar').click(function(){
-			$('#bntCancelar').hide();
-			
-			$('#Id').val("");
-            $('#Livro').val("");
-            $('#Usuario').val("");
-			$('#Tipo').val("");
-			$('#Devolucao').val("");
-			$('#Ativo select').val("true");
-		});
 		
 		GetMethod(null);
 	});

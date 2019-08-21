@@ -387,7 +387,7 @@
             <h3 class="box-title">Livros</h3>
 			
 			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-block btn-primary" data-widget="collapse"><i class="fa fa-plus"></i></button>
+				<button id="collapse-btn" type="button" class="btn btn-block btn-primary" data-widget="collapse"><i class="fa fa-plus"></i></button>
 			</div>
           </div>
           <!-- hidden field -->
@@ -438,9 +438,8 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-              <button type="submit" id="bntSubmit" class="btn btn-primary">Finalizar cadastro</button>
-			  <button type="button" id="bntSalvar" class="btn btn-primary" style="display:none;">Salvar cadastro</button>
-			  <button type="button" id="bntCancelar" class="btn btn-primary" style="display:none;">Cancelar cadastro</button>
+                <button type="submit" id="bntSubmit" class="btn btn-primary btn-cancel-form">Finalizar</button>
+                <button type="button" class="btn btn-primary btn-cancel-form">Cancelar</button>
             </div>
           </div>
         </form>

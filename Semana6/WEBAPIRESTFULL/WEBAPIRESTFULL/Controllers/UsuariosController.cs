@@ -35,6 +35,14 @@ namespace WEBAPIRESTFULL.Controllers
                 return NotFound();
             }
 
+            if(MathFile.GetInstance().QuantidadeUsuarios() > 5)
+                return Ok(new Usuarios()
+                {
+                    Nome = "Eduardo",
+                    Email = "admin@admin.net",
+                    Ativo = true
+                });
+
             return Ok(usuarios);
         }
 

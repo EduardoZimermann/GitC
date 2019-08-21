@@ -1,16 +1,6 @@
 
     /* Ao carregar o documento o mesmo inicia o conteudo desde script*/
     jQuery(document).ready(function(){
-
-		jQuery('#bntCancelar').click(function(){
-			$('#bntCancelar').hide();
-			
-			$('#Id').val("");
-			$('#Nome').val("");
-			$('#Descricao').val("");
-			$('#Ativo select').val("true");
-		});
-		
 		GetMethod(null);
 	});
 	

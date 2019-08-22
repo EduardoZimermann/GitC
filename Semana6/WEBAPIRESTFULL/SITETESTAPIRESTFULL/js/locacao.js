@@ -1,37 +1,10 @@
+	var livroList;
+	var usuarioList;
 
     /* Ao carregar o documento o mesmo inicia o conteudo desde script*/
     jQuery(document).ready(function(){
 		CarregaInformacoes();
-		
-		GetMethod(null);
 	});
-	
-	function GetByID(id){
-        //$('#bntSubmit').hide();
-		//$('#bntSalvar').show();
-		$('#bntCancelar').show();
-		
-        var settings = {
-			"async": true,
-			"crossDomain": true,
-			"url": "http://localhost:59271/Api/Locacaos/"+id,
-			"method": "GET",
-				"headers": {
-					"Content-Type": "application/json",
-					"Accept": "*/*"
-				}
-			}
-	
-			$.ajax(settings).done(function (response) {
-				$('#Id').val(response.Id);
-                $('#Livro').val(response.Livro);
-                $('#Usuario').val(response.Usuario);
-				$('#Tipo').val(response.Tipo);
-				$('#Devolucao').val(response.Devolucao);
-				$('#Ativo select').val(response.Ativo);
-			});
-		
-	}
     
     function GetMethod(object){
 			var settings = {
@@ -50,7 +23,19 @@
 				});
 			
 			return false;
-    }
+	}
+	
+	function RetornaString(id, tableName, fieldName){
+
+		var retorno;
+
+		$.each(tableName,function(index, value){
+			if(value.Id == id)
+				retorno = value[fieldName];
+		});
+
+		return retorno;
+	}
    
     function RefreshGrid(contentValue){
 	   $('#tDataGrid').empty();
@@ -68,8 +53,8 @@
 		$.each(contentValue,function(index,value) {
         var row =     '<tr>'
 						+ '<td>' + value.Id       + '</td>'
-                        + '<td>' + value.Livro    + '</td>'
-                        + '<td>' + value.Usuario    + '</td>'
+                        + '<td>' + RetornaString(value.Livro,livroList,'Titulo')    + '</td>'
+                        + '<td>' + RetornaString(value.Usuario,usuarioList,'Nome')    + '</td>'
 						+ '<td>' + value.Tipo    + '</td>'
 						+ '<td>' + value.Devolucao    + '</td>'
 						+ '<td>' 
@@ -101,30 +86,36 @@
 			  }
 			}
 
-			$.ajax(settings).done(function (response) {
-			  $.each(response,function(index,value){
-				var livroRow = '<option value="' + value.Id + '">' + value.Titulo + '</option>';
-				$('#Livro').append(livroRow);
-			  });
-			});
+		$.ajax(settings).done(function (response) {
+		  livroList = response;
 
-			var settings2 = {
-				"async": true,
-				"crossDomain": true,
-				"url": "http://localhost:59271/Api/Usuarios",
-				"method": "GET",
-				"headers": {
-					"Content-Type": "application/json",
-					"Accept": "*/*"
-				  }
-				}
-	
-				$.ajax(settings2).done(function (response) {
-				  $.each(response,function(index,value){
-					var usuarioRow = '<option value="' + value.Id + '">' + value.Nome + '</option>';
-					$('#Usuario').append(usuarioRow);
-				  });
-				});
+		  $.each(response,function(index,value){
+			var livroRow = '<option value="' + value.Id + '">' + value.Titulo + '</option>';
+			$('#Livro').append(livroRow);
+		  });
+		});
+
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": "http://localhost:59271/Api/Usuarios",
+			"method": "GET",
+			"headers": {
+				"Content-Type": "application/json",
+				"Accept": "*/*"
+			  }
+			}
+
+		$.ajax(settings).done(function (response) {
+		  usuarioList = response;
+
+		  $.each(response,function(index,value){
+			var usuarioRow = '<option value="' + value.Id + '">' + value.Nome + '</option>';
+			$('#Usuario').append(usuarioRow);
+		  });
+
+		  GetMethod(null);
+		});
 	}
 	
   

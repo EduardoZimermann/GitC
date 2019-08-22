@@ -19,7 +19,6 @@ jQuery(document).ready(function(){
 
         if(id !== ""){
             method = "PUT";
-            id = "/"+id;
         }
 
          var settings = {
@@ -36,10 +35,12 @@ jQuery(document).ready(function(){
         $.ajax(settings).done(function (response) {
             window[callStr](response);
         });
+        
+        var form = $('.btn-cancel-form').parent().parent().parent()[0];
 
-        /*$.each(form, function(index, value){
+        $.each(form, function(index, value){
           $('[name=\''+ value.name +'\']').val("");
-        });*/
+        });
         
         return false;
     });

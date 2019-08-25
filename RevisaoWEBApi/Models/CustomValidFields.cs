@@ -22,7 +22,7 @@ namespace RevisaoWEBApi.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (value != null)
-            {
+            {   
                 switch (typeField)
                 {
                     case ValidFields.ValidaLogin:
